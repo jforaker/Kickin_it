@@ -1,0 +1,2 @@
+module KicksHelper
+end
