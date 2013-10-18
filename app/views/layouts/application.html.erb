@@ -8,7 +8,17 @@
 </head>
 <body>
 
-<%= yield %>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <%= link_to "Kickin It", root_path, class:"navbar-brand"  %>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="span9"><%= yield %></div>
+  </div>
+</div>
 
 </body>
 </html>
