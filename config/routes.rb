@@ -6,7 +6,10 @@ KickinIt::Application.routes.draw do
   devise_for :users
   devise_scope :user do
     get "sign_in", :to => "devise/sessions#new"
+    #get "users/password/edit", :to => "devise/passwords#edit"
+
   end
+
 
   resources :kicks
 

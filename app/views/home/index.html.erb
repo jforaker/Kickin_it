@@ -1,5 +1,8 @@
 <h1>Kickin It</h1>
 
+<h3><%= current_user.name %></h3>       <!--do something with current_user.sign_in_count  !!!   -->
+<p> <%=link_to "Edit Profile", edit_user_registration_path %> </p>
+
 <%= link_to "Add a new Kick", new_kick_path, :class => "btn btn-info btn-sm", id: "newId" %>
 
 <div class="table-responsive">
