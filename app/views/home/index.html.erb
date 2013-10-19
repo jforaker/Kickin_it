@@ -1,19 +1,30 @@
-<h1>Kickin It</h1>
+<div class="row">
 
-<h3><%= current_user.name %></h3>       <!--do something with current_user.sign_in_count  !!!   -->
-<p> <%=link_to "Edit Profile", edit_user_registration_path %> </p>
+  <div class="col-md-2">
+    <h3><%= current_user.name %></h3>       <!--do something with current_user.sign_in_count  !!!   -->
+    <p> <%=link_to "Edit Profile", edit_user_registration_path %> </p>
+  </div>
 
-<%= link_to "Add a new Kick", new_kick_path, :class => "btn btn-info btn-sm", id: "newId" %>
+  <div class="col-md-4">
+    <%= link_to "Add a new Kick", new_kick_path, :class => "btn btn-info btn-sm", id: "newId" %>
 
-<div class="table-responsive">
-    <table class="table table-hover">
-      <% @kicks.each do |k| %>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <% @kicks.each do |k| %>
 
-          <tr>
-            <td><%= link_to k.title, kick_path(k), :class => "btn btn-primary btn-xs btn-block" %></td>
-            <td><%= k.description %></td>
-            <td><%= k.time %></td>
-          </tr>
-      <% end %>
-    </table>
+            <tr>
+              <td><%= link_to k.title, kick_path(k), :class => "btn btn-primary btn-xs btn-block" %></td>
+              <td><%= k.description %></td>
+              <td><%= k.time %></td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div id="map"></div>
+  </div>
 </div>
+
+
