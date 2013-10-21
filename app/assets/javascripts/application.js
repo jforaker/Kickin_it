@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
+//= require leaflet
+
 //= require wax
 
 

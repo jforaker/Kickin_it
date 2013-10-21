@@ -14,6 +14,9 @@ KickinIt::Application.routes.draw do
   resources :kicks
 
 
+  get "mykicks", :to => "home#mykicks"
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

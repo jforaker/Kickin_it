@@ -1,1 +1,22 @@
-#map { height: 680px; }
+.profile-img{
+  height: 80px;
+  width: 80px;
+  background: gray;
+}
+
+#mapbox {
+  height: 680px;
+  position: relative;
+  left: 100px;
+
+  .leaflet-marker-icon {
+    background: url(https://foursquare.com/img/pin-blue-transparent.png);
+    padding: 6px;
+    padding-bottom: 17px;
+    top: -6px;
+    left: -6px;
+    width: 43px !important;
+    height: 55px !important;
+    padding-left: 7px;
+  }
+}

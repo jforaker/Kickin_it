@@ -1,0 +1,7 @@
+<div class="col-md-2">
+  <img class="profile-img">
+  <h3><%= current_user.name %></h3>       <!--do something with current_user.sign_in_count  !!!   -->
+  <p> <%=link_to "Edit Profile", edit_user_registration_path %> </p>
+  <p><%= @user %> is my id</p>
+  <p><%= current_user.kicks.count %> kicks posted</p>
+</div>

@@ -137,6 +137,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  bcrypt-ruby
   better_errors
   bootstrap-sass (~> 2.3.2.1)
   coffee-rails (~> 4.0.0)
@@ -144,6 +145,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   meta_request
+  multi_json
   rails (= 4.0.0)
   sass-rails (>= 3.2)
   sdoc

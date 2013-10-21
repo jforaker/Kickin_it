@@ -13,3 +13,11 @@ Kick.create title: 'Beers at Joes Bar.',
 Kick.create title: 'Rangers game at Finnertys',
             description: 'Rangers vs Sharks at the bar',
             time: 700
+
+Kick.create title: 'Beers at Joes Bar.',
+            description: 'We are meeting at Joes Bar to celebrate Tims bday',
+            time: 830
+
+Kick.create title: 'Rangers game at Finnertys',
+            description: 'Rangers vs Sharks at the bar',
+            time: 700, location: ''

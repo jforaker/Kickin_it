@@ -1,6 +1,15 @@
+<%= form_for(@kick) do |f| %>
+    <% if @kick.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@kick.errors.count, "error") %> prohibited this location from being saved:</h2>
 
-
-<%= form_for @kick do |f| %>
+          <ul>
+            <% @kick.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
     <div class="field">
       <%= f.label :title %><br />
@@ -18,6 +27,7 @@
       <%= f.label :location %><br />
       <%= f.text_field :location %>
     </div>
+
 
     <div class="actions">
       <%= f.submit %>
