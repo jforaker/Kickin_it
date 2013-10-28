@@ -24,6 +24,16 @@ class KicksController < ApplicationController
     end
   end
 
+
+  def mykicks
+    @user = User.find_by_id(current_user.id)
+    @kicks = @user.kicks
+    respond_to do |format|
+      format.html
+      format.json { render json: @kicks }
+    end
+  end
+
   private
 
   def kick_params

@@ -2,6 +2,8 @@ KickinIt::Application.routes.draw do
   root "home#index"
 
   get "index", :to => "home#index"
+  resources :kicks
+  get "mykicks", :to => "kicks#mykicks"
 
 
 
@@ -13,10 +15,8 @@ KickinIt::Application.routes.draw do
   end
 
 
-  resources :kicks
 
 
-  get "mykicks", :to => "home#mykicks"
 
 
 
