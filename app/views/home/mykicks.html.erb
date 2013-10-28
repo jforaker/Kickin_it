@@ -1,1 +1,4 @@
-<%= @kicks.title %>
+<% @kicks.each do |kick| %>
+    <p><%= kick.title %></p>
+
+<% end %>

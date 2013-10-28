@@ -1,7 +1,15 @@
-<div class="col-md-2">
+<!--<div class="col-md-2">-->
+<div class="sidebar" style="position: absolute;
+        top: 0;
+        left: o;
+        left: 0;
+        background: rgba(0, 0, 0, 0.54);
+        color: white;
+        padding: 10px;">
   <img class="profile-img">
   <h3><%= current_user.name %></h3>       <!--do something with current_user.sign_in_count  !!!   -->
   <p> <%=link_to "Edit Profile", edit_user_registration_path %> </p>
   <p><%= @user %> is my id</p>
-  <p><%= current_user.kicks.count %> kicks posted</p>
+  <p><%= link_to current_user.kicks.count, mykicks_path  %> kicks posted</p>
 </div>
+<!--</div>-->

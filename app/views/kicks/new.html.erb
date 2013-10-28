@@ -5,18 +5,5 @@
 
 <script type="text/javascript">
 
-    //get the url parameter ?location= and populate the form with it
-    function getURLParameter(name) {
-        return decodeURI(
-                (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
-        );
-    }
 
-    $(document).ready(function(){
-        var locurl = getURLParameter("location");
-        var location = locurl.toString().replace(/-/g, ' ');
-        if (location !== undefined && location !== "null"){
-            $('input#kick_location').val(location);
-        }
-    });
 </script>

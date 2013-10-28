@@ -11,25 +11,27 @@
         </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :title %><br />
-      <%= f.text_field :title %>
+    <div class="form-group">
+      <%= f.text_field :title, class: "form-control", :placeholder => "Title" %>
     </div>
-    <div class="field">
-      <%= f.label :description %><br />
-      <%= f.text_field :description %>
+    <div class="form-group">
+      <%= f.text_field :description, class: "form-control",:placeholder => "Whats happening?"  %>
     </div>
-    <div class="field">
-      <%= f.label :time %><br />
-      <%= f.text_field :time %>
+    <div class="form-group">
+      <%= f.text_field :time, class: "form-control", :placeholder => "What time?"  %>
     </div>
-    <div class="field">
-      <%= f.label :location %><br />
-      <%= f.text_field :location %>
+    <div class="form-group">
+      <%= f.text_field :location, class: "form-control"  %>
     </div>
-
+    <div class="form-group">
+      <%= f.text_field :latitude, class: "form-control",:placeholder => "lat"  %>
+    </div>
+    <div class="form-group">
+      <%= f.text_field :longitude, class: "form-control", :placeholder => "lng"  %>
+    </div>
 
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit class: "btn btn-large btn-block btn-info" %>
     </div>
 <% end %>
+

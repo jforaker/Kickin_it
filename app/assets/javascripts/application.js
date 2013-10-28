@@ -16,8 +16,10 @@
 //= require_tree .
 //= require bootstrap
 //= require leaflet
-
+//= require jquery-ui
+//= require flatslider
 //= require wax
+
 
 
 

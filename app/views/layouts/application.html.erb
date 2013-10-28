@@ -13,33 +13,35 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="navbar-header">
     <%= link_to "Kickin It", root_path, class:"navbar-brand"  %>
+    <ul class="nav navbar-nav navbar-right" style="position: absolute; right: 0px;">
+      <% if user_signed_in? %>
+          <li><a href="#"><%= current_user.email %></a></li>
+          <li> <%= link_to "Sign out", destroy_user_session_path, method: :delete %> </li>
+
+      <% else %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </li>
+          <%= link_to "Sign up", new_user_registration_path %> or
+          <%= link_to "Sign in", new_user_session_path %>
+      <% end %>
+
+    </ul>
   </div>
 
-  <ul class="nav navbar-nav navbar-right">
-    <% if user_signed_in? %>
-        <li><a href="#"><%= current_user.email %></a></li>
-        <li> <%= link_to "Sign out", destroy_user_session_path, method: :delete %> </li>
 
-    <% else %>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-        <%= link_to "Sign up", new_user_registration_path %> or
-        <%= link_to "Sign in", new_user_session_path %>
-    <% end %>
-
-  </ul>
 </nav>
 
 
 
-<div class="container">
+<div class="container" style="position: relative;
+        left: -16px;">
 
     <%= yield %>
 

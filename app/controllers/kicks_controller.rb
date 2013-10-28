@@ -13,9 +13,10 @@ class KicksController < ApplicationController
 
   def create
 
-    kick_params = params.require(:kick).permit(:title, :description, :time, :location)
+    kick_params = params.require(:kick).permit(:title, :description, :time, :location, :user_id, :latitude, :longitude)
+    #params[:user_id] = current_user.id           #add user id to the current kick
     @kick = Kick.new(kick_params)
-    params[:user_id] = current_user.id             #add user id to the current kick
+    @kick.user_id = current_user.id
     if @kick.save
       redirect_to @kick  #shows that kick
     else
@@ -26,6 +27,6 @@ class KicksController < ApplicationController
   private
 
   def kick_params
-    params.require('kick').permit(:title, :description, :time, :location)
+    params.require('kick').permit(:title, :description, :time, :location, :user_id, :latitude, :longitude)
   end
 end

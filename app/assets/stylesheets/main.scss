@@ -4,19 +4,39 @@
   background: gray;
 }
 
+.kick-contr {
+  margin: 32px 0 20px 0;
+  border-top: 1px solid rgba(128, 128, 128, 0.26);
+
+  .title, .loc {
+    height:20px;
+    display: inline-block;
+  }
+  .desc{
+    height: 80px;
+  }
+  .in{
+    display:block;
+  }
+}
+
 #mapbox {
   height: 680px;
   position: relative;
-  left: 100px;
+  //left: 100px;
 
-  .leaflet-marker-icon {
-    background: url(https://foursquare.com/img/pin-blue-transparent.png);
-    padding: 6px;
-    padding-bottom: 17px;
-    top: -6px;
-    left: -6px;
-    width: 43px !important;
-    height: 55px !important;
-    padding-left: 7px;
-  }
+  //.leaflet-marker-icon {
+  //  background: url(https://foursquare.com/img/pin-blue-transparent.png);
+  //  padding: 6px;
+  //  padding-bottom: 17px;
+  //  top: -6px;
+  //  left: -6px;
+  //  width: 43px !important;
+  //  height: 55px !important;
+  //  padding-left: 7px;
+  //}
+}
+
+#slider1, #slider2, #slider3{
+  width: 217px;
 }
