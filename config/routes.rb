@@ -3,13 +3,17 @@ KickinIt::Application.routes.draw do
 
   get "index", :to => "home#index"
   resources :kicks
+  resources :user
   get "mykicks", :to => "kicks#mykicks"
+  get "user/:name", :to => "user#show"
+
 
 
 
   devise_for :users
   devise_scope :user do
     get "sign_in", :to => "devise/sessions#new"
+
     #get "users/password/edit", :to => "devise/passwords#edit"
 
   end

@@ -24,10 +24,10 @@
       <% @kicks.each do |kick| %>
 
           <div class="kick-contr kick-list-<%= kick.id %>" id="<%= kick.id %>" >
-            <div class="title"><%= link_to kick.title, kick_path(kick), :class => "btn btn-primary btn-large btn-block" %></div>
+            <div class="title"><%= link_to kick.title, kick_path(kick), :class => "btn btn-primary btn-large btn-block" %></div> <br>
             <div class="loc"><%= kick.location %></div>
             <div class="desc"><%= kick.description %></div>
-            <div class="in">Posted <%= time_ago_in_words(kick.created_at) %> ago by <%= kick.username %></div>
+            <div class="in">Posted <%= time_ago_in_words(kick.created_at) %> ago by <%= link_to kick.username, user_path(kick.username) %></div>
           </div>
       <% end %>
     </div>

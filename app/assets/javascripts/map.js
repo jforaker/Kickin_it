@@ -44,11 +44,13 @@ jQuery( document ).ready(function() {
         function placeMarker(map, latlng) {
             var LatLng = new L.LatLng(latlng.lat, latlng.lng);
             var marker = new L.Marker(LatLng, {
-                icon: L.mapbox.marker.icon({'marker-color': 'AA0978'}),
-//                icon: L.divIcon({
-//                    className: 'map-marker',
-//                    html: '<span class="dot"></span>'
-//                }),
+//                icon: L.mapbox.marker.icon({'marker-color': '3498db'}),
+                icon: L.divIcon({
+                    className: 'some-icon-class',
+                    html: '<img src="https://ss1.4sqi.net/img/categories/nightlife/bar.png">'
+                    //html: '<i class="fa fa-beer"></i>'
+
+                }),
                 iconSize: [15, 15],
                 draggable: false
             });
@@ -100,9 +102,13 @@ jQuery( document ).ready(function() {
                     });
                     var icon = new leafletIcon();
                     var loc = venues[i].venue.name;
+                    var hereNow = venues[i].venue.hereNow.count;
+                    var personPeople = (hereNow == 1) ? 'person' : 'people';
                     var locationHref = loc.toString().replace(/ /g, '-');
 
+
                     var tpl = '<h3> ' + loc + ' </h3><br />' +
+                        '<h5>' + hereNow + ' ' + personPeople + ' here now </h5>' +
                         '<a id="newkick" href="/kicks/new?location=' + locationHref + '">Kick it</a> ';
                     //  newkickpath;
 
@@ -139,7 +145,7 @@ jQuery( document ).ready(function() {
                     options: {
                         iconUrl: 'https://ss1.4sqi.net/img/categories/nightlife/bar.png',
                         shadowUrl: null,
-                        iconSize: new L.Point(52, 52),
+                        iconSize: new L.Point(32, 32),
                         iconAnchor: new L.Point(16, 41),
                         popupAnchor: new L.Point(0, -51),
                         className:  'kick-map-' + party_id
@@ -181,8 +187,8 @@ jQuery( document ).ready(function() {
                     var xAngle = jQuery(this).css('webkit-transform').slice(-9, -6) || jQuery(this).css('MozTransform').slice(-9, -6),
                         yAngle = jQuery(this).css('webkit-transform').slice(-4, -1) || jQuery(this).css('MozTransform').slice(-4, -1);
 
-                    jQuery(allBackDivs).fadeOut(400);
-                    jQuery(backDiv).fadeIn(400);
+                    jQuery(allBackDivs).fadeOut(100);
+                    jQuery(backDiv).fadeIn(800);
 
                     //and set it as the new border div's position
                     jQuery(backDiv).css('-webkit-transform', "translate3d(" + xAngle + "px," + yAngle + "px,0");
@@ -200,10 +206,9 @@ jQuery( document ).ready(function() {
                             width: 70,
                             "z-index": 0,
                             borderRadius: 35,
-                            border:"5px dashed red"
+                            border:"5px dashed #3498db"
                         }
                     });
-                    return false;
                 });
             }
         });
@@ -228,7 +233,7 @@ jQuery( document ).ready(function() {
 
                     //show only the Kick that is clicked on
 
-                    //TODO --
+                    //TODO -- after all is selected SOME BUG happens
 
                     var thisparty = jQuery('.kicks-all').find('.kick-list-' + getid)[0];
                     jQuery(thisparty).show();

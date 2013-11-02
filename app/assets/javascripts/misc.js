@@ -58,11 +58,11 @@ $( document ).ready(function() {
             100: "Waste case"
         },
         intellect: {
-            0: "Geico commercial star",
-            25: "reeding iz guhd",
-            50: "GED is good for me",
-            75: "75",
-            100: "100"
+            0: "reeding iz guhd",
+            25: "GED is good for me",
+            50: "5th year of community college",
+            75: "Average Joe",
+            100: "PhD"
         }
     };
 
@@ -70,13 +70,13 @@ $( document ).ready(function() {
         $("#slider1"),
         $("#slider2"),
         $("#slider3")
-    ]
+    ];
 
     var sliderLabelArr = [
         $("#levels1"),
         $("#levels2"),
         $("#levels3")
-    ]
+    ];
 
     //add custom strings to slider ui
 
@@ -94,7 +94,7 @@ $( document ).ready(function() {
         slide: function(event, ui){
             $("#levels1").val(slidervals.quietlevels[ui.value]);
         }
-    })
+    });
     sliderLabelArr[0].val(slidervals.quietlevels[$($sliderArray[0]).slider("value")]);
 
 
@@ -105,7 +105,7 @@ $( document ).ready(function() {
         slide: function(event, ui){
             $("#levels2").val(slidervals.wastedlevels[ui.value]);
         }
-    })
+    });
     sliderLabelArr[1].val(slidervals.wastedlevels[$($sliderArray[1]).slider("value")]);
 
     $sliderArray[2].slider({
@@ -115,11 +115,27 @@ $( document ).ready(function() {
         slide: function(event, ui){
             $("#levels3").val(slidervals.intellect[ui.value]);
         }
-    })
+    });
     sliderLabelArr[2].val(slidervals.intellect[$($sliderArray[2]).slider("value")]);
 
 
+    jQuery('#Update-profile').click(function(e){
 
+        var obj = {
+            one: '',
+            two: '',
+            three: ''
+        };
 
+        var one = jQuery(sliderLabelArr[2].val(slidervals.intellect[$($sliderArray[2]).slider("value")])[0]).val();
+        var two = jQuery(sliderLabelArr[1].val(slidervals.wastedlevels[$($sliderArray[1]).slider("value")])[0]).val();
+        var three = jQuery(sliderLabelArr[0].val(slidervals.quietlevels[$($sliderArray[0]).slider("value")])[0]).val();
+
+        obj.one = one;
+        obj.two = two;
+        obj.three = three;
+
+        console.log(obj);
+    });
 });
 
