@@ -19,6 +19,8 @@
 //= require jquery-ui
 //= require flatslider
 //= require wax
+//= require l.control.geosearch
+//= require l.geosearch.provider.google
 
 
 

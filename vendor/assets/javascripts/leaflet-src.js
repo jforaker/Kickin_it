@@ -3266,6 +3266,8 @@ L.Icon = L.Class.extend({
 		}
 		this._setIconStyles(img, name);
 
+
+
 		return img;
 	},
 
@@ -3299,7 +3301,9 @@ L.Icon = L.Class.extend({
 
 	_createImg: function (src, el) {
 
+
 		if (!L.Browser.ie6) {
+
 			if (!el) {
 				el = document.createElement('img');
 			}

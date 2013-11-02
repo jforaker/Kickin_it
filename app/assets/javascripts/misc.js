@@ -13,6 +13,11 @@ function getURLParameter(name) {
 }
 
 $(document).ready(function(){
+
+
+
+
+
 //    var locurl = getURLParameter("location");
 //    var location = locurl.toString().replace(/-/g, ' ');
     var lat = getURLParameter("Lat");
