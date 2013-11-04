@@ -6,12 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-
-
-jQuery( document ).ready(function() {
-
-
-
+load("home#index", function (controller, action) {
     var config = {
         clientId: 'BCH20MFU1KWJNGTFVQHYSOQGDA42BZ5KYWGIQJW40HT4PAOT',
         clientSecret: 'EQBJW4R53FTIB4Y1DZV0J35YX3VPBRR1B5H4TNJO12V1E25I',
@@ -26,7 +21,9 @@ jQuery( document ).ready(function() {
 
         // Create map
         var map = L.mapbox.map('mapbox', 'jakeforaker83.map-3rsqzlls')
-            .setView(new L.LatLng(lat, lng + 0.005), 15);    // "+" adds some padding
+            .setView(new L.LatLng(lat, lng + 0.005), 15);   // "+" adds some padding
+
+
 
         //lets disable zoom
         map.touchZoom.disable();
@@ -62,8 +59,8 @@ jQuery( document ).ready(function() {
             //bind hover popup to current marker
             marker.on('mouseover', function(e) { this.openPopup(); })
                 .bindPopup(popup, {
-                closeButton: true
-            });
+                    closeButton: true
+                });
 
             console.log('lat =  ' + marker._latlng.lat + 'long =  ' + marker._latlng.lng);
 
@@ -74,8 +71,6 @@ jQuery( document ).ready(function() {
         new L.Control.GeoSearch({
             provider: new L.GeoSearch.Provider.Google()
         }).addTo(map);
-
-
 
         // Query foursquare API for venue recommendations near the current location
         jQuery( "#foursquare-button" ).click(function() {
@@ -128,12 +123,15 @@ jQuery( document ).ready(function() {
             var res = coordinates;
             for (var i = 0; i < res.length; i++) {
 
-                var lat = res[i].latitude;
-                var lng = res[i].longitude;
-                var title = res[i].title;
-                var party_id = res[i].id;
+                var kickData = {
+                    lat:        res[i].latitude,
+                    lng:        res[i].longitude,
+                    title:      res[i].title,
+                    party_id:   res[i].id,
+                    created_by: res[i].username
+                };
 
-                console.log(lat + '  ' + lng + '  ' + party_id);
+                console.log(kickData);
 
                 var latLng = new L.LatLng(
                     res[i].latitude,
@@ -148,12 +146,14 @@ jQuery( document ).ready(function() {
                         iconSize: new L.Point(32, 32),
                         iconAnchor: new L.Point(16, 41),
                         popupAnchor: new L.Point(0, -51),
-                        className:  'kick-map-' + party_id
+                        className:  'kick-map-' + kickData.party_id
                     }
                 });
                 var icon = new kickIcon();
-                var tpl = '<h3> ' + title + ' </h3><br />' +
-                    '<a id="newkick" href="/kicks/new?location=' + lng + '">Kick it</a> ';
+
+                var tpl =   '<h3> ' + kickData.title + ' </h3><br />' +
+                    '<h5><a href="/profile/'+kickData.created_by+'"> by ' + kickData.created_by + ' </a></h5><br />' +
+                    '<a id="newkick" href="/kicks/new?location=' + kickData.lng + '">Kick it</a> ';
 
                 var marker = new L.Marker(latLng, {icon: icon})
                     .bindPopup(tpl, { closeButton: true })
@@ -165,10 +165,11 @@ jQuery( document ).ready(function() {
                     });
                 map.addLayer(marker);
 
-                //create border div element behind icon
-                var backDiv='<div class="added to-' + party_id + '">';
+                //create border div element behind icon (hidden until click)
+                var backDiv='<div class="added to-' + kickData.party_id + '">';
 
-                var kickmapIcons = jQuery('.kick-map-' + party_id);
+                //find the array of icons
+                var kickmapIcons = jQuery('.kick-map-' + kickData.party_id);
 
                 //add border div 'before' each kick icon
                 jQuery(kickmapIcons).before(backDiv);
@@ -187,9 +188,6 @@ jQuery( document ).ready(function() {
                     var xAngle = jQuery(this).css('webkit-transform').slice(-9, -6) || jQuery(this).css('MozTransform').slice(-9, -6),
                         yAngle = jQuery(this).css('webkit-transform').slice(-4, -1) || jQuery(this).css('MozTransform').slice(-4, -1);
 
-                    jQuery(allBackDivs).fadeOut(100);
-                    jQuery(backDiv).fadeIn(800);
-
                     //and set it as the new border div's position
                     jQuery(backDiv).css('-webkit-transform', "translate3d(" + xAngle + "px," + yAngle + "px,0");
                     jQuery(markerArray).removeClass('selected');
@@ -197,15 +195,21 @@ jQuery( document ).ready(function() {
                     //add selected class AFTER we find the PREVIOUSLY selected marker
                     jQuery(this).addClass('selected');
 
+                    //hide all other back circle divs
+                    jQuery(allBackDivs).fadeOut(100);
+
+                    //fadein the back circle div to the current marker
+                    jQuery(backDiv).fadeIn(800);
+
                     //animate the border circle div from the previously selected marker to the newly selected one
                     jQuery(old).animate_from_to('.kick-map-' + myNum, {
                         pixels_per_second: 1000,
                         initial_css: {
                             'background': 'transparent',
-                            height: 70,
-                            width: 70,
+                            height: 48,
+                            width: 48,
                             "z-index": 0,
-                            borderRadius: 35,
+                            borderRadius: 24,
                             border:"5px dashed #3498db"
                         }
                     });
@@ -244,6 +248,7 @@ jQuery( document ).ready(function() {
             }
 
         });
-    });
 
+    });
 });
+

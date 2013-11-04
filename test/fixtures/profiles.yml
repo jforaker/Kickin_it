@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  drunkness: MyString
+  smartness: MyString
+  loudness: MyString
+
+two:
+  drunkness: MyString
+  smartness: MyString
+  loudness: MyString

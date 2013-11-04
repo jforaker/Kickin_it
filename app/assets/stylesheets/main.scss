@@ -1,52 +1,93 @@
-.profile-img{
-  height: 80px;
-  width: 80px;
-  background: gray;
+.login-form:before {
+  content: none;
 }
 
-.kick-contr {
-  margin: 32px 0 20px 0;
-  border-top: 1px solid rgba(128, 128, 128, 0.26);
+.modal {
+  overflow-y: auto;
+}
 
-  .title {
-    height:20px;
-    display: inline-block;
+.main{
+  width: 100%;
+  position: absolute;
+
+  .sidebar{
+    position: absolute;
+    top: 0;
+    left: o;
+    left: 0;
+    background: rgba(0, 0, 0, 0.54);
+    color: white;
+    padding: 10px;
+
+    .profile-img{
+      height: 80px;
+      width: 80px;
+      background: gray;
+    }
   }
-  .loc {
-    height:20px;
-    display: inline-block;
+
+  .kicks-all{
+    position: absolute;      z-index: 2;
+    background: rgba(0, 0, 0, 0.64);
+    width: 427px;
+    right: 0;
+    color: white;top: 0;
+    padding: 24px;
+    height: 633px;
+    overflow-y: scroll;
+
+    .kick-contr {
+      margin: 32px 0 20px 0;
+      border-top: 1px solid rgba(128, 128, 128, 0.26);
+
+      .title {
+        height:20px;
+        display: inline-block;
+      }
+      .loc {
+        height:20px;
+        display: inline-block;
+      }
+      .desc{
+        height: 80px;
+      }
+      .in{
+        display:block;
+      }
+    }
   }
-  .desc{
-    height: 80px;
-  }
-  .in{
-    display:block;
-  }
+}
+
+#slider1, #slider2, #slider3{
+  width: 217px;
+}
+
+.ui-slider-handle {
+  background-color: #16a085;
+  height: 40px !important;
+  top: -15px !important;
+  width: 40px !important;
 }
 
 #mapbox {
   height: 680px;
   position: relative;
-  //left: 100px;
 
-  //.leaflet-marker-icon {
-  //  background: url(https://foursquare.com/img/pin-blue-transparent.png);
-  //  padding: 6px;
-  //  padding-bottom: 17px;
-  //  top: -6px;
-  //  left: -6px;
-  //  width: 43px !important;
-  //  height: 55px !important;
-  //  padding-left: 7px;
-  //}
+  .leaflet-left {
+    left: 145px !important;
+  }
+  .leaflet-control-attribution.leaflet-control a{
+    display: none !important;
+  }
+
   .added {
     border: 5px dashed #3498db;
     display: none;
-    margin-left: -30px;
-    margin-top: -54px;
-    width: 70px;
-    height: 70px;
-    border-radius: 35px;
+    margin-left: -29px;
+    margin-top: -53px;
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
     position: absolute;
     left: 0;
     top: 0;
@@ -56,21 +97,21 @@
 
 
   .leaflet-marker-icon {
-
-    //&:hover{
-    //  outline: 5px solid red;
-    //  border-radius:5px;
-    //  outline-style:dashed;
-    //}
-
+    //  background: url(https://foursquare.com/img/pin-blue-transparent.png);
+    //  padding: 6px;
+    //  padding-bottom: 17px;
+    //  top: -6px;
+    //  left: -6px;
+    //  width: 43px !important;
+    //  height: 55px !important;
+    //  padding-left: 7px;
     &.selected{
 
-      //outline: 6px solid green;
     }
-
-
   }
 }
+
+/* font-awesome */
 
 .fa{
   color: rgb(7, 166, 216);
@@ -78,16 +119,15 @@
 }
 
 .anim{
-  height: 70px !important;
-  width: 70px !important;
-  margin-top: -12px;
-  margin-left: -14px;
+  margin-left: -14px !important;
+  margin-top: -12px !important;
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 24px;
   opacity: 1 !important;
 }
 
-#slider1, #slider2, #slider3{
-  width: 217px;
-}
+
 .leaflet-center {
   width: 40%;
   margin-left: auto;
@@ -141,4 +181,90 @@
   background: rgba(255, 255, 255, 0.75);
   border-radius: 4px;
   border: none;
+}
+
+/* timepicker styles */
+
+
+.ui-timepicker-wrapper {
+  overflow-y: auto;
+  height: 150px;
+  width: 6.5em;
+  background: #fff;
+  border: 1px solid #ddd;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  outline: none;
+  z-index: 10001;
+  margin: 0;
+  &.ui-timepicker-with-duration {
+    width: 11em;
+  }
+}
+
+.ui-timepicker-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ui-timepicker-duration {
+  margin-left: 5px;
+  color: #888;
+}
+
+.ui-timepicker-list {
+  &:hover .ui-timepicker-duration {
+    color: #888;
+  }
+  li {
+    padding: 3px 0 3px 5px;
+    cursor: pointer;
+    white-space: nowrap;
+    color: #000;
+    list-style: none;
+    margin: 0;
+  }
+  &:hover .ui-timepicker-selected {
+    background: #fff;
+    color: #000;
+  }
+}
+
+li.ui-timepicker-selected {
+  background: #1980EC;
+  color: #fff;
+}
+
+.ui-timepicker-list {
+  li:hover, .ui-timepicker-selected:hover {
+    background: #1980EC;
+    color: #fff;
+  }
+}
+
+li.ui-timepicker-selected .ui-timepicker-duration {
+  color: #ccc;
+}
+
+.ui-timepicker-list li {
+  &:hover .ui-timepicker-duration {
+    color: #ccc;
+  }
+  &.ui-timepicker-disabled {
+    color: #888;
+    cursor: default;
+    &:hover {
+      color: #888;
+      cursor: default;
+    }
+  }
+  &.ui-timepicker-selected.ui-timepicker-disabled {
+    color: #888;
+    cursor: default;
+  }
+  &.ui-timepicker-disabled:hover, &.ui-timepicker-selected.ui-timepicker-disabled {
+    background: #f2f2f2;
+  }
 }

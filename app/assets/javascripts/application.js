@@ -12,15 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
-//= require bootstrap
-//= require leaflet
 //= require jquery-ui
-//= require flatslider
+//= require turbolinks
+//= require leaflet
 //= require wax
 //= require l.control.geosearch
 //= require l.geosearch.provider.google
+//= require loadjs
+//= require_tree .
+
+
 
 
 

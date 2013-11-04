@@ -4,40 +4,24 @@
   <title>KickinIt</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css' rel='stylesheet' />
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
+<body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
 <nav class="navbar navbar-default" role="navigation">
   <div class="navbar-header">
     <%= link_to "Kickin It", root_path, class:"navbar-brand"  %>
     <ul class="nav navbar-nav navbar-right" style="position: absolute; right: 0px;">
       <% if user_signed_in? %>
           <li><a href="#"><%= current_user.email %></a></li>
-          <li> <%= link_to "Sign out", destroy_user_session_path, method: :delete %> </li>
-
+          <li><%=link_to "Account", edit_user_registration_path %></li>
+          <li> <a class="" data-toggle="modal" data-target="#signout-modal">Sign out</a> </li>
       <% else %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </li>
           <%= link_to "Sign up", new_user_registration_path %> or
           <%= link_to "Sign in", new_user_session_path %>
       <% end %>
-
     </ul>
   </div>
-
-
 </nav>
-
 
 <div class="container" style="position: relative;
         left: -16px;">
@@ -45,5 +29,27 @@
     <%= yield %>
 
 </div>
+
+<div class="modal  fade" id="signout-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Do you really want to sign out?</h4>
+      </div>
+      <div class="modal-body">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <%= link_to "Sign out", destroy_user_session_path, :id => "butt", :class => "btn btn-primary btn-large", method: :delete, :data => {:target => '#signout-modal', :toggle => 'modal'}%>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--TODO -- check script loading-->
+
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+
+
 </body>
 </html>

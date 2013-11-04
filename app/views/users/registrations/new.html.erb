@@ -4,18 +4,40 @@
     <%= devise_error_messages! %>
 
     <div><%= f.label :name %><br />
-      <%= f.text_field :name, :autofocus => true %></div>
+      <%= f.text_field :name, :autofocus => true, class: "form-control"  %></div>
 
     <div><%= f.label :email %><br />
-      <%= f.email_field :email %></div>
+      <%= f.email_field :email, class: "form-control"  %></div>
 
     <div><%= f.label :password %><br />
-      <%= f.password_field :password %></div>
+      <%= f.password_field :password, class: "form-control"  %></div>
 
     <div><%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation %></div>
+      <%= f.password_field :password_confirmation, class: "form-control"  %></div>
+    <br>
 
-    <div><%= f.submit "Sign up" %></div>
+    <!--<div id="slider1" class="ui-slider">-->
+    <!--</div>-->
+    <!--<p>-->
+      <!--<label for="talklevels-label"></label>-->
+      <!--<input data-param="smartness" type="text" id="levels1" style="border: 0; color: #f6931f; font-weight: bold;" />-->
+    <!--</p>-->
+
+    <!--<div id="slider2" class="ui-slider">-->
+    <!--</div>-->
+    <!--<p>-->
+      <!--<label for="talklevels-label"></label>-->
+      <!--<input data-param="drunkness" type="text" id="levels2" style="border: 0; color: #f6931f; font-weight: bold;" />-->
+    <!--</p>-->
+
+    <!--<div id="slider3" class="ui-slider">-->
+    <!--</div>-->
+    <!--<p>-->
+      <!--<label for="talklevels-label"></label>-->
+      <!--<input data-param="smartness" type="text" id="levels3" style="border: 0; color: #f6931f; font-weight: bold;" />-->
+    <!--</p>-->
+
+    <div><%= f.submit "Sign up", :class => "btn btn-primary" , :id => "save-profile"%></div>
 <% end %>
 
 <%= render "users/shared/links" %>

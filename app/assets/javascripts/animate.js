@@ -25,8 +25,8 @@
             initial_css: {
                 opacity: 1,
                 position: "absolute",
-                top: (c.offset().top +13),
-                left: (c.offset().left +13),
+                top: (c.offset().top),
+                left: (c.offset().left),
                 height: (c.height()),
                 width: (c.width()),
                 "z-index": 0
