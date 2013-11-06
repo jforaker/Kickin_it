@@ -224,6 +224,8 @@ load("home#index", function (controller, action) {
             }
         });
 
+        //TODO -- move Animate into assets
+
         jQuery( "#single-all" ).click(function(){
             jQuery(this).toggleClass('single-view');
 

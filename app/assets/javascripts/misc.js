@@ -11,6 +11,8 @@ load({
         kicks: ['new', 'edit']
     }
 }, function (controller, action) {
+
+
     //get the url parameter ?location= and populate the form with it
 
     function getURLParameter(name) {
@@ -20,15 +22,11 @@ load({
     }
 
 //    var locurl = getURLParameter("location");
+    var lat = getURLParameter("Lat"),
+        lng = getURLParameter("Lng");
 //    var location = locurl.toString().replace(/-/g, ' ');
-    var lat = getURLParameter("Lat");
-    var lng = getURLParameter("Lng");
 
-//    if (location !== undefined && location !== "null"){
-//        $('input#kick_location').val(location);
-//    }
-
-    //TODO -- something with location
+                                                        //TODO -- something with location
 
     if (lat !== undefined && lat !== "null"){
         $('input#kick_latitude').val(lat);
@@ -278,9 +276,9 @@ load("registrations#new", function (controller, action) {
             three: ''
         };
 
-        var one = jQuery(sliderLabelArr[2].val(slidervals.smartness[$($sliderArray[2]).slider("value")])[0]).val();
-        var two = jQuery(sliderLabelArr[1].val(slidervals.drunkness[$($sliderArray[1]).slider("value")])[0]).val();
-        var three = jQuery(sliderLabelArr[0].val(slidervals.loudness[$($sliderArray[0]).slider("value")])[0]).val();
+        var one = jQuery(sliderLabelArr[2].val(slidervals.smartness[$($sliderArray[2]).slider("value")])[0]).val(),
+            two = jQuery(sliderLabelArr[1].val(slidervals.drunkness[$($sliderArray[1]).slider("value")])[0]).val(),
+            three = jQuery(sliderLabelArr[0].val(slidervals.loudness[$($sliderArray[0]).slider("value")])[0]).val();
 
         obj.one = one;
         obj.two = two;

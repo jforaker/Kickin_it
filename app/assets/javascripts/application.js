@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require turbolinks
 //= require leaflet
 //= require wax
 //= require l.control.geosearch

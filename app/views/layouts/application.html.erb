@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>KickinIt</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
   <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css' rel='stylesheet' />
   <%= csrf_meta_tags %>
 </head>
@@ -26,29 +26,31 @@
 <div class="container" style="position: relative;
         left: -16px;">
 
-    <%= yield %>
 
-</div>
-
-<div class="modal fade" id="signout-modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Do you really want to sign out?</h4>
-      </div>
-      <div class="modal-body">
-        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <%= link_to "Sign out", destroy_user_session_path, :id => "butt", :class => "btn btn-primary btn-large", method: :delete, :data => {:target => '#signout-modal', :toggle => 'modal'}%>
+  <div class="modal fade" id="signout-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Do you really want to sign out?</h4>
+        </div>
+        <div class="modal-body">
+          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          <%= link_to "Sign out", destroy_user_session_path, :id => "butt", :class => "btn btn-primary btn-large", method: :delete, :data => {:target => '#signout-modal', :toggle => 'modal'}%>
+        </div>
       </div>
     </div>
   </div>
+
+
+  <!--TODO -- check script loading-->
+
+  <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
+  <script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+
+  <%= yield %>
+
 </div>
 
-
-<!--TODO -- check script loading-->
-
-<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-<script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
 
 
 </body>
