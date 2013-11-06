@@ -54,7 +54,7 @@ load("home#index", function (controller, action) {
 
             //add custom popup to marker
             var popup =  '<h3> ' + LatLng + ' </h3><br />' +
-                '<a id="newkick" href="/kicks/new?location=' + '?Lat=' + latlng.lat + '&?Lng=' + latlng.lng +'">Kick it</a> ';
+                '<a id="newkick" href="/kicks/new?Lat=' + latlng.lat + '&?Lng=' + latlng.lng +'">Kick it</a> ';
 
             //bind hover popup to current marker
             marker.on('mouseover', function(e) { this.openPopup(); })
@@ -103,6 +103,8 @@ load("home#index", function (controller, action) {
                         }
                     });
                     var icon = new leafletIcon();
+                    var lati = venues[i].venue.location.lat;
+                    var longi = venues[i].venue.location.lng;
                     var loc = venues[i].venue.name;
                     var hereNow = venues[i].venue.hereNow.count;
                     var personPeople = (hereNow == 1) ? 'person' : 'people';
@@ -111,7 +113,7 @@ load("home#index", function (controller, action) {
 
                     var tpl = '<h3> ' + loc + ' </h3><br />' +
                         '<h5>' + hereNow + ' ' + personPeople + ' here now </h5>' +
-                        '<a id="newkick" href="/kicks/new?location=' + locationHref + '">Kick it</a> ';
+                        '<a id="newkick" href="/kicks/new?spot=' + locationHref + '&?Lat=' + lati + '&?Lng=' + longi  + '">Kick it</a> ';
                     //  newkickpath;
 
                     var marker = new L.Marker(latLng, {icon: icon})
@@ -159,8 +161,8 @@ load("home#index", function (controller, action) {
                 var icon = new kickIcon();
 
                 var tpl =   '<h3> ' + kickData.title + ' </h3><br />' +
-                    '<h5><a href="/profile/'+kickData.created_by+'"> by ' + kickData.created_by + ' </a></h5><br />' +
-                    '<a id="newkick" href="/kicks/new?location=' + kickData.lng + '">Kick it</a> ';
+                    '<h5><a href="/user/'+kickData.created_by+'"> by ' + kickData.created_by + ' </a></h5><br />' +
+                    '<a id="newkick" href="/kicks/new?spot=' + kickData.lng + '">Kick it</a> ';
 
                 var marker = new L.Marker(latLng, {icon: icon})
                     .bindPopup(tpl, { closeButton: true })

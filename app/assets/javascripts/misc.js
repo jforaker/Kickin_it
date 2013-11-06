@@ -21,12 +21,12 @@ load({
         );
     }
 
-//    var locurl = getURLParameter("location");
-    var lat = getURLParameter("Lat"),
-        lng = getURLParameter("Lng");
-//    var location = locurl.toString().replace(/-/g, ' ');
+    var spoturl = getURLParameter("spot"),
+        lat = getURLParameter("Lat"),
+        lng = getURLParameter("Lng"),
+        spot = spoturl.toString().replace(/-/g, ' ');
 
-                                                        //TODO -- something with location
+    //TODO -- something with location
 
     if (lat !== undefined && lat !== "null"){
         $('input#kick_latitude').val(lat);
@@ -34,6 +34,12 @@ load({
 
     if (lng !== undefined && lng !== "null"){
         $('input#kick_longitude').val(lng);
+    }
+
+    //TODO -- something if its a user kick
+
+    if (spoturl != "null"){
+        $('input#kick_location').val(spot);
     }
 
     jQuery('#timepicker').timepicker({ 'scrollDefaultNow': true })

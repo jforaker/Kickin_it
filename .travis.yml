@@ -1,0 +1,7 @@
+deploy:
+  provider: heroku
+  api_key:
+    secure: CamKDr1kZ65iEtdoL4GeVYYsScCmptZ+QlqtuiGUcBoZKM/C4aEZpY78h6CeHAJnQqcpx4HwmDqXGP6GNXv2vCh5YoORTdNnc68Sr2gfEr+4bU2fIVQlLL17l2hu+457LF7wFRH699jYw2AthALLcMpPciDWVNTJdXlDYRKF87I=
+  app: pure-ridge-5134
+  on:
+    repo: jforaker/Kickin_it
