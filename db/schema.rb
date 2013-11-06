@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20131105144456) do
     t.float    "latitude"
     t.integer  "user_id"
     t.string   "username"
+    t.string   "time"
     t.string   "scale"
   end
 
