@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20131105144456) do
     t.string   "description"
     t.string   "title"
     t.string   "location"
-    t.integer  "user_id"
     t.float    "longitude"
     t.float    "latitude"
+    t.integer  "user_id"
     t.string   "username"
     t.string   "scale"
   end
