@@ -1,5 +1,5 @@
 class RemoveTimeFromKicks < ActiveRecord::Migration
   def change
-    remove_column :kicks, :time, :integer
+    add_column :kicks, :time, :string
   end
 end
