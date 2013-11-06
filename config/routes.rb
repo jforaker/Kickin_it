@@ -6,7 +6,6 @@ KickinIt::Application.routes.draw do
   resources :user
   get "mykicks", :to => "kicks#mykicks"
   get "user/:name", :to => "user#show"
-  match "profile/:id/update" => "profile#update", :via => :post
 
 
   devise_for :users
