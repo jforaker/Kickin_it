@@ -1,7 +1,18 @@
-<%= @title %>
-<% @user.kicks.each do |kick| %>
+<%= @user.drunkness %>
+<br>
+<%= @user.smartness %>
+<br>
+<%= @user.loudness %>
+<br>
 
+<div class="users-kicks">
+  <h2><%= @user.permalink %>'s kicks</h2>
+  <ul style="list-style: none">
+    <% @user.kicks.each do |kick| %>
 
-    <p><i class="fa fa-beer"><%= kick.title %></i></p>
+        <li><i class="fa fa-beer"> &nbsp; <%= link_to kick.title, kick_path(kick.id) %></i></li>
 
-<% end %>
+    <% end %>
+  </ul>
+</div>
+

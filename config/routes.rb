@@ -4,27 +4,15 @@ KickinIt::Application.routes.draw do
   get "index", :to => "home#index"
   resources :kicks
   resources :user
-  resources :profile
   get "mykicks", :to => "kicks#mykicks"
   get "user/:name", :to => "user#show"
-  #post "profile/:id/update", :to => "profile#update"
   match "profile/:id/update" => "profile#update", :via => :post
-
-
-
-
 
 
   devise_for :users
   devise_scope :users do
     get "sign_in", :to => "devise/sessions#new"
-
-    #get "users/password/edit", :to => "devise/passwords#edit"
-
   end
-
-
-
 
 
 

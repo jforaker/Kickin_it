@@ -29,16 +29,15 @@
       <%= f.text_field :longitude, class: "form-control", :placeholder => "lng"  %>
     </div>
 
+    <br>
     <div id="deb-scale" class="ui-slider"></div>
     <p>
-      <label for="talklevels-label"></label>
-      <input type="text" id="deb-input" style="border: 0; color: #f6931f; font-weight: bold;" />
+      <label for="deb-scale"></label>
+      <%= f.text_field :scale, :placeholder => "Debauchery Scale", class: "form-control", :id => "deb-input", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
     </p>
 
     <div class="actions">
-      <%= f.submit class: "btn btn-large btn-block btn-info" %>
+      <%= f.submit class: "btn btn-large btn-block btn-info", :id => "kick-create" %>
     </div>
-
-
 
 <% end %>

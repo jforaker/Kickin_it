@@ -1,9 +1,19 @@
+<p id="notice">
+  <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+  <% end -%>
+</p>
+
 <blockquote>
   <h2>Description: </h2>
   <p><%= @kick.title  %></p>
   <p><%= @kick.description  %></p>
   <p><%= @kick.time  %></p>
   <p><%= @kick.location  %></p>
-
+  <p><%= @kick.scale  %></p>
 </blockquote>
 
+
+<% if @user == @kick.username %>
+    <%= link_to "edit this kick", edit_kick_path(@kick) %>
+<% end %>

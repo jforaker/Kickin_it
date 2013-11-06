@@ -1,7 +1,7 @@
 <div class="sidebar">
   <img class="profile-img">
   <h3><%= current_user.name %></h3>       <!--do something with current_user.sign_in_count  !!!   -->
-  <p> <%=link_to "Edit Profile", edit_profile_path(current_user.permalink) %> </p>
+  <p> <%=link_to "Edit Profile", edit_user_path(current_user.permalink) %> </p>
 
   <p><%= @user %> is my id</p>
   <p><%= link_to current_user.kicks.count, mykicks_path  %> kicks posted</p>

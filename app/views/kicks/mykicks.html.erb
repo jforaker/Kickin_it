@@ -1,5 +1,4 @@
 <% @kicks.each do |kick| %>
-
-    <p><i class="fa fa-beer"><%= kick.title %></i></p>
-
+    <p><i class="fa fa-beer"><%= link_to kick.title, kick_path(kick.id) %></i></p>
+    <p class="<%= kick.scale %>"><%= kick.scale %></p>
 <% end %>

@@ -14,7 +14,7 @@
       <% if user_signed_in? %>
           <li><a href="#"><%= current_user.email %></a></li>
           <li><%=link_to "Account", edit_user_registration_path %></li>
-          <li> <a class="" data-toggle="modal" data-target="#signout-modal">Sign out</a> </li>
+          <li> <a href="#" data-toggle="modal" data-target="#signout-modal">Sign out</a> </li>
       <% else %>
           <%= link_to "Sign up", new_user_registration_path %> or
           <%= link_to "Sign in", new_user_session_path %>
@@ -30,7 +30,7 @@
 
 </div>
 
-<div class="modal  fade" id="signout-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="signout-modal" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

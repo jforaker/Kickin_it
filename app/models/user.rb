@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
-
   before_save :create_permalink , :save_characteristics
 
   validates_uniqueness_of :name
@@ -12,7 +11,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :kicks
-  has_many :profiles
+  has_many :rsvps
+
   acts_as_tagger
 
   def user_id
@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
   def to_param
     permalink
     drunkness
+    smartness
+    loudness
   end
 
   private
@@ -30,6 +32,8 @@ class User < ActiveRecord::Base
   end
 
   def save_characteristics
-    self.drunkness = drunkness
+    self.drunkness
+    self.smartness
+    self.loudness
   end
 end

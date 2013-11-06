@@ -16,28 +16,31 @@
       <%= f.password_field :password_confirmation, class: "form-control"  %></div>
     <br>
 
-    <!--<div id="slider1" class="ui-slider">-->
-    <!--</div>-->
-    <!--<p>-->
-      <!--<label for="talklevels-label"></label>-->
+    <div id="slider1" class="ui-slider">
+    </div>
+    <p>
+      <label for="talklevels-label"></label>
       <!--<input data-param="smartness" type="text" id="levels1" style="border: 0; color: #f6931f; font-weight: bold;" />-->
-    <!--</p>-->
+      <%= f.text_field :loudness, class: "form-control", :id => "levels1", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
+    </p>
 
-    <!--<div id="slider2" class="ui-slider">-->
-    <!--</div>-->
-    <!--<p>-->
-      <!--<label for="talklevels-label"></label>-->
+    <div id="slider2" class="ui-slider">
+    </div>
+    <p>
+      <label for="talklevels-label"></label>
       <!--<input data-param="drunkness" type="text" id="levels2" style="border: 0; color: #f6931f; font-weight: bold;" />-->
-    <!--</p>-->
+      <%= f.text_field :drunkness, class: "form-control", :id => "levels2", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
+    </p>
 
-    <!--<div id="slider3" class="ui-slider">-->
-    <!--</div>-->
-    <!--<p>-->
-      <!--<label for="talklevels-label"></label>-->
+    <div id="slider3" class="ui-slider">
+    </div>
+    <p>
+      <label for="talklevels-label"></label>
       <!--<input data-param="smartness" type="text" id="levels3" style="border: 0; color: #f6931f; font-weight: bold;" />-->
-    <!--</p>-->
+      <%= f.text_field :smartness, class: "form-control",:id => "levels3", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
+    </p>
 
-    <div><%= f.submit "Sign up", :class => "btn btn-primary" , :id => "save-profile"%></div>
+    <div><%= f.submit "Sign up", :class => "btn btn-primary" , :id => "new-profile"%></div>
 <% end %>
 
 <%= render "users/shared/links" %>

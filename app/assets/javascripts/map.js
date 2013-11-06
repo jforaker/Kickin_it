@@ -49,7 +49,7 @@ load("home#index", function (controller, action) {
 
                 }),
                 iconSize: [15, 15],
-                draggable: false
+                draggable: true
             });
 
             //add custom popup to marker
@@ -62,7 +62,14 @@ load("home#index", function (controller, action) {
                     closeButton: true
                 });
 
-            console.log('lat =  ' + marker._latlng.lat + 'long =  ' + marker._latlng.lng);
+            marker.on('dragend', function (e) {
+                var coords = e.target.getLatLng();
+                var lat = coords.lat;
+                var lng = coords.lng;
+                console.log(lat + '   ' + lng);
+            });
+
+            //console.log('lat =  ' + marker._latlng.lat + 'long =  ' + marker._latlng.lng);
 
             marker.addTo(map);
         }

@@ -1,0 +1,41 @@
+<h1>Edit Profile (user)</h1>
+
+<br>
+
+<%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this location from being saved:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div id="slider1" class="ui-slider"></div>
+    <p>
+      <label for="talklevels-label"></label>
+      <%= f.text_field :loudness, class: "form-control", :id => "levels1", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
+    </p>
+
+    <div id="slider2" class="ui-slider"></div>
+    <p>
+      <label for="talklevels-label"></label>
+      <%= f.text_field :smartness, class: "form-control",:id => "levels2", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
+    </p>
+
+    <div id="slider3" class="ui-slider"></div>
+    <p>
+      <label for="talklevels-label"></label>
+      <%= f.text_field :drunkness, class: "form-control", :id => "levels3", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
+
+    </p>
+
+    <br>
+    <div><%= f.submit "Update", :class => "btn btn-inverse" , :id => "save-profile"%></div>
+<% end %>
+
+
+

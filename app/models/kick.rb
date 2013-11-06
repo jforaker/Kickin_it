@@ -1,6 +1,8 @@
 class Kick < ActiveRecord::Base
   belongs_to :user
   has_many :tags
+  has_many :rsvps
+
   acts_as_taggable_on :tags
 
 

@@ -15,11 +15,13 @@
           <div class="title"><%= link_to kick.title, kick_path(kick), :class => "btn btn-primary btn-large btn-block" %></div> <br>
           <div class="loc"><%= kick.location %></div>
           <div class="desc"><%= kick.description %></div>
+          <div class="desc"><%= kick.scale %> </div>
           <div class="in">Posted <%= time_ago_in_words(kick.created_at) %> ago by
             <% if kick.username == current_user.permalink %>
-                me
+                me   |
+                <%= link_to "edit", edit_kick_path(kick.id) %>
             <% else %>
-                <%= link_to kick.username, profile_path(kick.username) %>
+                <%= link_to kick.username, user_path(kick.username) %>
             <% end %>
           </div>
         </div>
