@@ -5,3 +5,5 @@ deploy:
   app: pure-ridge-5134
   on:
     repo: jforaker/Kickin_it
+       run:
+          - restart
