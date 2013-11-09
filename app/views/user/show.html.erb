@@ -1,18 +1,28 @@
-<%= @user.drunkness %>
-<br>
-<%= @user.smartness %>
-<br>
-<%= @user.loudness %>
-<br>
-
-<div class="users-kicks">
-  <h2><%= @user.permalink %>'s kicks</h2>
-  <ul style="list-style: none">
-    <% @user.kicks.each do |kick| %>
-
-        <li><i class="fa fa-beer"> &nbsp; <%= link_to kick.title, kick_path(kick.id) %></i></li>
-
+<div class="user-show">
+    <br>
+    <% if @user.avatar_content_type == "image/jpeg"  %>
+        <%= image_tag @user.avatar.url(:medium), class: "img-rounded img-responsive" %>
     <% end %>
-  </ul>
-</div>
+    <br>
 
+    <blockquote>
+        <br>
+        <i class="fa fa-check-square"></i><%= @user.drunkness %>
+        <br>
+        <i class="fa fa-check-square"></i><%= @user.smartness %>
+        <br>
+        <i class="fa fa-check-square"></i><%= @user.loudness %>
+        <br>
+    </blockquote>
+
+    <div class="users-kicks">
+        <h1><%= @user.permalink %>'s kicks</h1>
+        <ul>
+            <% @user.kicks.each do |kick| %>
+                <li>
+                    <i class="fa fa-beer"></i> &nbsp; <h3><%= link_to kick.title, kick_path(kick.id) %></h3>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</div>

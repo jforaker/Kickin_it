@@ -14,7 +14,7 @@
       <%= f.text_field :title, class: "form-control", :placeholder => "Title" %>
     </div>
     <div class="form-group">
-      <%= f.text_field :description, class: "form-control",:placeholder => "Whats happening?"  %>
+      <%= f.text_area :description, class: "form-control",:placeholder => "Whats happening?"  %>
     </div>
     <div class="form-group">
       <%= f.text_field :time, class: "form-control", :id => "timepicker", :placeholder => "What time?"  %>
@@ -29,6 +29,11 @@
       <%= f.text_field :longitude, class: "form-control", :placeholder => "lng"  %>
     </div>
 
+
+    <div><%= f.label "Add a photo" %><br />
+        <%= f.file_field :avatar, class: "form-control"%>
+    </div>
+
     <br>
     <div id="deb-scale" class="ui-slider"></div>
     <p>
@@ -37,7 +42,9 @@
     </p>
 
     <div class="actions">
-      <%= f.submit class: "btn btn-large btn-block btn-info", :id => "kick-create" %>
+       <%= f.submit class: "btn btn-large btn-block btn-info", :id => "kick-create" %>
     </div>
+
+    <br><br>
 
 <% end %>

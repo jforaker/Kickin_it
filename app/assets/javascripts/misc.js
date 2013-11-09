@@ -12,7 +12,6 @@ load({
     }
 }, function (controller, action) {
 
-
     //get the url parameter ?location= and populate the form with it
 
     function getURLParameter(name) {
@@ -26,7 +25,6 @@ load({
         lng = getURLParameter("Lng"),
         spot = spoturl.toString().replace(/-/g, ' ');
 
-    //TODO -- something with location
 
     if (lat !== undefined && lat !== "null"){
         $('input#kick_latitude').val(lat);
@@ -54,9 +52,9 @@ load({
     var debVals = {
         scale: {
             0: "Sipping some pinot",
-            25: "definitely more than one",
-            50: "something middle",
-            75: "A riot",
+            25: "Definitely more than one",
+            50: "Could get ugly",
+            75: "A total riot",
             100: "Jail in our future"
         }
     };
@@ -116,9 +114,9 @@ load("user#edit", function (controller, action) {
         },
         smartness: {
             0: "reeding iz guhd",
-            25: "GED is good for me",
+            25: "Keanu Reeves",
             50: "5th year of community college",
-            75: "Average Joe",
+            75: "An intellectual",
             100: "PhD"
         }
     };
@@ -308,4 +306,28 @@ load("registrations#new", function (controller, action) {
 //            }
 //        });
     });
+});
+
+load("kicks#show", function (controller, action) {
+    var icon = jQuery('#time')[0];
+
+    var url = window.kickURL,
+        currentTime = window.currentTime;
+
+    console.log(currentTime);
+
+    jQuery.getJSON(url, {}, function(data) {
+
+        var kickTimeAmPm = data.time,
+            kickTime = kickTimeAmPm.slice(0, -2);
+
+        console.log(kickTime)
+
+        if (currentTime > kickTime){
+            jQuery(icon).addClass('late');
+        }
+
+    });
+
+
 });

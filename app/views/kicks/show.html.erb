@@ -1,13 +1,24 @@
-<blockquote>
-  <h2>Description: </h2>
-  <p><%= @kick.title  %></p>
-  <p><%= @kick.description  %></p>
-  <p><%= @kick.time  %></p>
-  <p><%= @kick.location  %></p>
-  <p><%= @kick.scale  %></p>
-</blockquote>
+<div class="kick-show">
+    <div class="row"  style="background-image: url(<%= @kick.avatar.url(:large) %>)">
+        <div class="col-lg-8">
+            <div class="party">
+                <div class="pull-left" href="#">
+                    <%= image_tag @kick.user_avatar.url(:thumb), :class => "pic img-rounded img-responsive"   %>
+                </div>
+                <div class="party-body" >
+                    <h1><%= @kick.title  %></h1>
+                    <blockquote> - posted by <%= @kick.username  %></blockquote>
+                    <h3><%= @kick.description  %><small> <i id="time" title="<%= @kick.time %>" class="fa fa-clock-o"></i><%= @kick.time %>  | <%= @kick.location  %></small></h3>
+                    <br>
+                    <a  class="btn btn-hg btn-primary btn-inverse"><%= @kick.scale  %></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-<% if @user == @kick.username %>
-    <%= link_to "edit this kick", edit_kick_path(@kick) %>
+<%= javascript_tag do %>
+    window.kickURL = '<%= j kick_url %>';
+    window.currentTime = '<%= j Time.now.strftime("%I:%M") %>'
 <% end %>

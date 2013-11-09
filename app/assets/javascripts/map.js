@@ -102,13 +102,13 @@ load("home#index", function (controller, action) {
                             popupAnchor: new L.Point(0, -51)
                         }
                     });
-                    var icon = new leafletIcon();
-                    var lati = venues[i].venue.location.lat;
-                    var longi = venues[i].venue.location.lng;
-                    var loc = venues[i].venue.name;
-                    var hereNow = venues[i].venue.hereNow.count;
-                    var personPeople = (hereNow == 1) ? 'person' : 'people';
-                    var locationHref = loc.toString().replace(/ /g, '-');
+                    var icon = new leafletIcon(),
+                        lati = venues[i].venue.location.lat,
+                        longi = venues[i].venue.location.lng,
+                        loc = venues[i].venue.name,
+                        hereNow = venues[i].venue.hereNow.count,
+                        personPeople = (hereNow == 1) ? 'person' : 'people',
+                        locationHref = loc.toString().replace(/ /g, '-');
 
 
                     var tpl = '<h3> ' + loc + ' </h3><br />' +
@@ -187,11 +187,11 @@ load("home#index", function (controller, action) {
                     e.preventDefault();
 
                     //get the current/previously selected kick marker
-                    var old = jQuery('.leaflet-marker-pane').find('IMG.selected')[0];
-                    var markerArray = jQuery('.leaflet-marker-icon');
-                    var myNum = this.classList[1].slice(9);
-                    var allBackDivs = jQuery('.added');
-                    var backDiv = jQuery(".to-" + myNum )[0];
+                    var old = jQuery('.leaflet-marker-pane').find('IMG.selected')[0],
+                        markerArray = jQuery('.leaflet-marker-icon'),
+                        myNum = this.classList[1].slice(9),
+                        allBackDivs = jQuery('.added'),
+                        backDiv = jQuery(".to-" + myNum )[0];
 
                     //grab the position of the current kick marker
                     var xAngle = jQuery(this).css('webkit-transform').slice(-9, -6) || jQuery(this).css('MozTransform').slice(-9, -6),

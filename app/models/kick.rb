@@ -2,9 +2,10 @@ class Kick < ActiveRecord::Base
   belongs_to :user
   has_many :tags
   has_many :rsvps
+  has_many :avatars
 
-  acts_as_taggable_on :tags
-
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" , :large => "600x600" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :user_avatar, :styles => { :medium => "300x300>", :thumb => "100x100>"}, :default_url => "/images/:style/missing.png"
 
   validates_presence_of :title,  :location, :description, :time
 
