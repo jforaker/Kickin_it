@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131108225649) do
+ActiveRecord::Schema.define(version: 20131109063855) do
 
   create_table "kicks", force: true do |t|
     t.datetime "created_at"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20131108225649) do
     t.string   "user_avatar_content_type"
     t.string   "user_avatar_file_size"
     t.string   "user_avatar"
+    t.string   "filepicker_url"
+    t.string   "filepicker_avatar_url"
   end
 
   create_table "photos", force: true do |t|
@@ -70,6 +72,7 @@ ActiveRecord::Schema.define(version: 20131108225649) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "filepicker_url"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

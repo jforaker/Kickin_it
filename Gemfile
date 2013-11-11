@@ -31,6 +31,8 @@ gem 'paperclip', '~> 3.0'
 
 gem 'loadjs'
 
+gem 'filepicker-rails'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 #gem 'therubyracer', platforms: :ruby
 

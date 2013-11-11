@@ -19,11 +19,12 @@ class KicksController < ApplicationController
     @user = current_user
     kick_params = params.require(:kick).permit(:title, :description, :time, :location, :user_id, :latitude, :longitude,
                                                :name, :scale, :avatar,
-                                               :user_avatar)
+                                               :user_avatar, :filepicker_url, :filepicker_avatar_url)
     @kick = Kick.new(kick_params)
     @kick.user_id = @user.id
     @kick.username = @user.name
     @kick.user_avatar = @user.avatar
+    @kick.filepicker_avatar_url = @user.filepicker_url
 
     if @kick.save
       redirect_to @kick  #shows that kick
@@ -43,7 +44,7 @@ class KicksController < ApplicationController
     @kick = Kick.find(params[:id])
     kick_params = params.require(:kick).permit(:title, :description, :time, :location, :user_id, :latitude, :longitude,
                                                :name, :scale, :avatar,
-                                               :user_avatar)
+                                               :user_avatar, :filepicker_url, :filepicker_avatar_url)
 
     respond_to do |format|
       if @kick.update_attributes(kick_params)

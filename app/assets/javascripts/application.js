@@ -22,6 +22,7 @@
 //= require geosearch
 //= require bootstrap-min
 //= require timepicker
+//= require moment
 
 
 //= require_tree .

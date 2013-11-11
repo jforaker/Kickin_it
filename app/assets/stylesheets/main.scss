@@ -1,3 +1,25 @@
+@import "_flat-ui";
+
+@import '../../../vendor/assets/stylesheets/bootstrap/bootstrap.scss';
+@import "../../../vendor/assets/stylesheets/flat-ui-sass/flat-ui.sass";
+@import 'leaflet.css';
+@import "_user-show";
+@import "_home-index";
+@import "_mapbox-leaflet";
+@import "_kick-show";
+@import "_kick-new";
+@import "_user-new";
+
+
+
+
+
+.navbar-right{
+  position: absolute;
+  right: 0px;
+  top: 12px;
+}
+
 .login-form:before {
   content: none;
 }
@@ -6,116 +28,16 @@
   overflow-y: auto;
 }
 
-.main{
-  width: 100%;
-  position: absolute;
 
-  .sidebar{
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.54);
-    color: white;
-    padding: 10px;
 
-    .imageContainer {
-      width: 100px;
-      padding-bottom: 100%;
-      position: relative;
-      overflow: hidden;
-      IMG {
-        //width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 0;
-      }
-    }
-
-    .profile-img{
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      left: 0;
-      height: 80px;
-      width: 80px;
-      background: gray;
-    }
-  }
-
-  .kicks-all{
-    position: absolute;      z-index: 2;
-    background: rgba(0, 0, 0, 0.64);
-    width: 427px;
-    right: 0;
-    color: white;top: 0;
-    padding: 24px;
-    height: 633px;
-    overflow-y: scroll;
-
-    .kick-contr {
-      margin: 32px 0 20px -24px;
-      border-top: 6px solid rgba(128, 128, 128, 0.26);
-      padding: 16px;
-      width: 103%;
-
-      .title {
-        height:20px;
-        display: inline-block;
-      }
-      .loc {
-        display: block;
-      }
-      .desc{
-        blockquote {
-          padding: 10px 20px;
-          margin: 13px 0 27px 2px;
-          border-left: 5px solid rgba(238, 238, 238, 0.29);
-        }
-      }
-      .in {
-        display: inline-block;
-        font-size: 14px;
-        font-style: italic;
-        color: rgba(208, 224, 235, 0.86);
-        float: left;
-        margin-left: 68px;
-      }
-
-      .imageContainer {
-        width: 15%;
-        height: 0;
-        padding-bottom: 15%;
-        position: relative;
-        top: 22px;
-
-        IMG {
-          width: 100%;
-          height: 100%;
-          position: absolute;
-          left: 0;
-          opacity: 0.7;
-          filter: alpha(opacity=50);
-          -webkit-transition: opacity 0.5s linear;
-
-          &:hover {
-            opacity: 1;
-            filter: alpha(opacity=100);
-            -webkit-transition: opacity 0.5s linear;
-
-          }
-        }
-      }
-    }
-  }
-}
-
-#slider1, #slider2, #slider3{
+#slider1, #slider2, #slider3, #deb-scale{
   width: 217px;
 }
 
 input[type="file"]{
-  height: 79px;
+  height: 45px;
   border: 4px dotted rgba(128, 128, 128, 0.31);
+  margin-bottom: 19px;
 }
 
 .ui-slider-handle {
@@ -125,310 +47,40 @@ input[type="file"]{
   width: 40px !important;
 }
 
-#mapbox {
-  height: 680px;
-  position: relative;
-
-  .leaflet-left {
-    left: 145px !important;
-  }
-  .leaflet-control-attribution.leaflet-control a{
-    display: none !important;
-  }
-
-  .added {
-    border: 5px dashed #3498db;
-    display: none;
-    margin-left: -29px;
-    margin-top: -53px;
-    width: 48px;
-    height: 48px;
-    border-radius: 24px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 1 !important;
-    z-index: 4444;
-  }
-
-
-  .leaflet-marker-icon {
-    //  background: url(https://foursquare.com/img/pin-blue-transparent.png);
-    //  padding: 6px;
-    //  padding-bottom: 17px;
-    //  top: -6px;
-    //  left: -6px;
-    //  width: 43px !important;
-    //  height: 55px !important;
-    //  padding-left: 7px;
-    &.selected{
-
-    }
-  }
-}
 
 /* font-awesome */
 
 .fa{
   color: rgb(7, 166, 216);
   font-size: 46px;
-}
 
-.anim{
-  margin-left: -14px !important;
-  margin-top: -12px !important;
-  width: 48px !important;
-  height: 48px !important;
-  border-radius: 24px;
-  opacity: 1 !important;
-}
+  .fa-clock-o{
 
 
-.leaflet-center {
-  width: 40%;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-}
+    &.early{
+      color: green !important;
+    }
 
-.leaflet-control-geosearch {
-  border-radius: 7px;
-  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.25);
-  margin: 10px 0 0 206px;
-  padding: 5px;
-  width: 100%;
-  height: auto;
-  ul {
-    border-radius: 7px;
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.25);
-    margin: 10px 0 0 206px;
-    padding: 5px;
-    width: 100%;
-    height: auto;
-  }
-}
-
-.leaflet-control-geosearch-msg ul {
-  list-style: none;
-  display: none;
-  height: auto;
-  background: none;
-  padding: 0;
-}
-
-.leaflet-control-geosearch{
-  ul{
-    li {
-      background: none repeat scroll 0 0 rgba(255, 255, 255, 0.75);
-      border-radius: 4px;
-      margin: 2px 0;
-      padding: 4px;
-      font: 12px arial;
-      text-indent: 4px;
+    &.late{
+      color: red !important;
     }
   }
+
 }
 
-.leaflet-container .leaflet-control-geosearch input {
-  width: 100%;
-  height: 28px;
-  padding: 0;
-  text-indent: 8px;
-  background: rgba(255, 255, 255, 0.75);
-  border-radius: 4px;
-  border: none;
+IMG{
+  cursor: pointer;
 }
 
 
-
-.new_kick{
-
-
-  /* timepicker styles */
-
-  .ui-timepicker-wrapper {
-    overflow-y: auto;
-    height: 150px;
-    width: 14.5em;
-    background: #fff;
-    border: 1px solid #ddd;
-    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    outline: none;
-    z-index: 10001;
-    margin: 0;
-    &.ui-timepicker-with-duration {
-      width: 11em;
-    }
-  }
-
-  .ui-timepicker-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    font-size: 20px;
-  }
-
-  .ui-timepicker-duration {
-    margin-left: 5px;
-    color: #888;
-  }
-
-  .ui-timepicker-list {
-    &:hover .ui-timepicker-duration {
-      color: #888;
-    }
-    li {
-      padding: 3px 0 3px 5px;
-      cursor: pointer;
-      white-space: nowrap;
-      color: #000;
-      list-style: none;
-      margin: 0;
-    }
-    &:hover .ui-timepicker-selected {
-      background: #fff;
-      color: #000;
-    }
-  }
-
-  li.ui-timepicker-selected {
-    background: #1980EC;
-    color: #fff;
-  }
-
-  .ui-timepicker-list {
-    li:hover, .ui-timepicker-selected:hover {
-      background: #1980EC;
-      color: #fff;
-    }
-  }
-
-  li.ui-timepicker-selected .ui-timepicker-duration {
-    color: #ccc;
-  }
-
-  .ui-timepicker-list li {
-    &:hover .ui-timepicker-duration {
-      color: #ccc;
-    }
-    &.ui-timepicker-disabled {
-      color: #888;
-      cursor: default;
-      &:hover {
-        color: #888;
-        cursor: default;
-      }
-    }
-    &.ui-timepicker-selected.ui-timepicker-disabled {
-      color: #888;
-      cursor: default;
-    }
-    &.ui-timepicker-disabled:hover, &.ui-timepicker-selected.ui-timepicker-disabled {
-      background: #f2f2f2;
-    }
-  }
-
-  #deb-scale{
-    width: 225px;
-    margin-top: 23px;
-  }
+.main{
+  margin: 10px 0 10px 0;
 }
 
 
-
-.kick-show{
-  .row{
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 600px;
-
-    .party{
-      box-shadow:0px 0px 4px -2px #000;
-
-      margin: 20px 0;
-      background: rgba(0, 0, 0, 0.68);
-      height: auto;
-      padding: 66px;
-      color: rgb(230, 230, 230);
-
-      SMALL{
-        display: block;
-        padding: 20px 0;
-
-        I{
-          font-size: 33px;
-          position: relative;
-          top: 7px;
-          margin-right: 10px;
-          transition: all 1s ease-in-out;
-
-          &.late{
-            color: #E74C3C;
-            transform:rotate(3600deg);
-            -ms-transform:rotate(360deg);
-            -webkit-transform:rotate(360deg);
-          }
-
-          &:hover{
-            transform:rotate(3600deg);
-            -ms-transform:rotate(360deg);
-            -webkit-transform:rotate(360deg);
-          }
-        }
-      }
-
-      BLOCKQUOTE{
-        border-left: 5px solid rgba(238, 238, 0, 0);
-      }
-
-
-    }
-    .pic{
-      border:10px solid #eee;
-      transition: all 0.7s ease-in-out;
-      padding: 10px;
-      margin-right: 35px;
-
-      &:hover{
-        border:2px solid #eee;
-        transform:rotate(8deg);
-        -ms-transform:rotate(8deg);
-        -webkit-transform:rotate(8deg);
-      }
-    }
+@media (min-width: 1200px)  {
+  .container {
+    max-width: 90%;
   }
 }
 
-.user-show{
-
-  BLOCKQUOTE{
-
-    I {
-      font-size: 15px;
-      color: #D35400;
-      padding: 6px;
-    }
-  }
-
-  .users-kicks{
-    H1{
-      padding: 5px;
-    }
-
-    UL{
-      list-style: none;
-
-      LI {
-
-        I {
-          color: #34495E;
-        }
-        H3 {
-          display: inline-block;
-        }
-      }
-    }
-  }
-}

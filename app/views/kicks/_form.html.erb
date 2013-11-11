@@ -1,50 +1,70 @@
-<%= form_for(@kick) do |f| %>
-    <% if @kick.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@kick.errors.count, "error") %> prohibited this location from being saved:</h2>
-          <ul>
-            <% @kick.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
+<div class="new_kick">
+    <%= form_for(@kick) do |f| %>
+        <% if @kick.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@kick.errors.count, "error") %> prohibited this location from being saved:</h2>
+                <ul>
+                    <% @kick.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+
+        <div class="form-group">
+            <%= f.text_field :title, class: "form-control", :placeholder => "Title" %>
         </div>
+        <div class="form-group">
+            <%= f.text_area :description, class: "form-control",:placeholder => "Whats happening?"  %>
+        </div>
+        <div class="form-group">
+            <%= f.text_field :time, class: "form-control", :id => "timepicker", :placeholder => "What time?"  %>
+        </div>
+        <div class="form-group">
+            <%= f.text_field :location, class: "form-control", :placeholder => "Where?" %>
+        </div>
+        <div class="form-group" style="opacity:0.4">
+            <%= f.text_field :latitude, class: "form-control disabled",:placeholder => "lat" %>
+        </div>
+        <div class="form-group" style="opacity:0.4">
+            <%= f.text_field :longitude, class: "form-control disabled", :placeholder => "lng"  %>
+        </div>
+
+        <div>
+            <%= f.label :filepicker_url, "Upload a photo from the cloud:  " %>
+            <%= f.filepicker_field :filepicker_url,
+                                   :'data-fp-apikey' => 'ARSPEML9RTdartRlwYl8hz', :'data-fp-container' => 'modal',
+                                   :'data-fp-mimetypes' => '*/*', :'data-fp-services' => 'COMPUTER,IMAGE_SEARCH,DROPBOX,FACEBOOK,GITHUB,GOOGLE_DRIVE,FLICKR,GMAIL,INSTAGRAM,PICASA',
+                                   class: "btn btn-default", onchange:"pick(event)"%>
+
+        </div>
+
+        <div class="res"></div>
+
+
+        <br>
+        <div id="deb-scale" class="ui-slider"></div>
+        <p>
+            <label for="deb-scale"></label>
+            <%= f.text_field :scale, :placeholder => "Debauchery Scale", class: "form-control", :id => "deb-input", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
+        </p>
+
+        <div class="actions">
+            <%= f.submit class: "btn btn-large btn-block btn-info", :id => "kick-create" %>
+        </div>
+
+        <br><br>
+
     <% end %>
-
-    <div class="form-group">
-      <%= f.text_field :title, class: "form-control", :placeholder => "Title" %>
-    </div>
-    <div class="form-group">
-      <%= f.text_area :description, class: "form-control",:placeholder => "Whats happening?"  %>
-    </div>
-    <div class="form-group">
-      <%= f.text_field :time, class: "form-control", :id => "timepicker", :placeholder => "What time?"  %>
-    </div>
-    <div class="form-group">
-      <%= f.text_field :location, class: "form-control", :placeholder => "Where?" %>
-    </div>
-    <div class="form-group" style="opacity:0.4">
-      <%= f.text_field :latitude, class: "form-control",:placeholder => "lat"  %>
-    </div>
-    <div class="form-group" style="opacity:0.4">
-      <%= f.text_field :longitude, class: "form-control", :placeholder => "lng"  %>
-    </div>
+</div>
 
 
-    <div><%= f.label "Add a photo" %><br />
-        <%= f.file_field :avatar, class: "form-control"%>
-    </div>
-
-    <br>
-    <div id="deb-scale" class="ui-slider"></div>
-    <p>
-      <label for="deb-scale"></label>
-      <%= f.text_field :scale, :placeholder => "Debauchery Scale", class: "form-control", :id => "deb-input", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
-    </p>
-
-    <div class="actions">
-       <%= f.submit class: "btn btn-large btn-block btn-info", :id => "kick-create" %>
-    </div>
-
-    <br><br>
-
-<% end %>
+<script type="text/javascript">
+    function pick(data){
+        console.log(data);
+        var photo = data.fpfile.url,
+            ele = jQuery('.res')[0],
+            imgres = '<img src=" ' + photo + ' ">';
+        jQuery(ele).fadeIn(800).append(imgres);
+    }
+</script>

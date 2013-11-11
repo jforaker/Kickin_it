@@ -3,9 +3,6 @@
     <%= render 'mapbox' %>
     <%= render 'sidebar' %>
 
-    <%= link_to "Add a new Kick", new_kick_path, :class => "btn btn-info btn-block", id: "newId" %>
-    <button id="foursquare-button" class="btn btn-info btn-block">Check foursquare</button>
-
     <div class="kicks-all">
         <button id="single-all" class="btn btn-info btn-block" data-text-single="Single view?" data-text-all="View All">Single view?</button>
 
@@ -15,23 +12,25 @@
                 <div class="title">
                     <h1> <%= link_to kick.title, kick_path(kick) %></h1>
                 </div>
+                <div class="loc"><small><i id="time-icon" class="fa fa-clock-o"></i><%= kick.time %> | at <%= kick.location %></small></div>
+
                 <br>
                 <div class="desc"><blockquote><%= kick.description %></blockquote></div>
                 <div class="desc" style="color: #F39C12"><%= kick.scale %> </div>
-                <div class="loc pull-right"><small>at <%= kick.location %></small></div>
+                <div class="imageContainer">
 
-                <% if kick.user_avatar_content_type %>
-                    <div class="imageContainer">
+                    <% if kick.user_avatar_content_type %>
                         <a href="user/<%= kick.username %>"> <%= image_tag kick.user_avatar.url(:thumb), class: "opacity" %></a>
-                    </div>
-                <% else  %>
-                    <div class="imageContainer">
+                    <% elsif (kick.filepicker_avatar_url != "") && (kick.user_avatar != 'nil') %>
+                        <a href="user/<%= kick.username %>"> <%= filepicker_image_tag kick.filepicker_avatar_url, fit: 'clip' %></a>
+                    <% else %>
                         <a> <img src="/assets/default.jpg"></a>
-                    </div>
-                <% end %>
+                    <% end %>
+
+                </div>
                 <div class="in">
                     <span>Posted <%= time_ago_in_words(kick.created_at) %> ago by
-                    <% if kick.username == current_user.permalink %>
+                        <% if kick.username == current_user.permalink %>
                         me   |  <%= link_to "edit", edit_kick_path(kick.id) %>
                     <% else %>
                         <%= link_to kick.username, user_path(kick.username) %>
@@ -42,4 +41,9 @@
             </div>
         <% end %>
     </div>
+    <div id="fs">
+        <button id="foursquare-button" class="btn btn-info btn-block"><i class="fa fa-foursquare" style="font-size: 19px;color: white;padding-right: 8px;"></i> Check foursquare</button>
+    </div>
+    <br>
 </div>
+

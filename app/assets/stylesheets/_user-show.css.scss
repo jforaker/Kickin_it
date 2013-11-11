@@ -1,0 +1,58 @@
+
+.user-show{
+
+  .imageContainer {
+    width: 110px;
+    padding-bottom: 110px;
+    position: relative;
+    overflow: hidden;
+
+    IMG {
+      //width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      // border:10px solid #eee;
+      transition: all 0.7s ease-in-out;
+      // padding: 10px;
+      margin-right: 55px;
+      border-radius:50%;
+
+
+      &:hover{
+        transform:rotate(360deg);
+        -ms-transform:rotate(8deg);
+        -webkit-transform:rotate(360deg);
+      }
+    }
+  }
+
+  BLOCKQUOTE{
+
+    I {
+      font-size: 15px;
+      color: #D35400;
+      padding: 6px;
+    }
+  }
+
+  .users-kicks{
+    H1{
+      padding: 5px;
+    }
+
+    UL{
+      list-style: none;
+
+      LI {
+
+        I {
+          color: #34495E;
+        }
+        H3 {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

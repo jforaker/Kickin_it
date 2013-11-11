@@ -1,0 +1,24 @@
+
+
+INPUT{
+  margin-bottom: 8px;
+}
+
+
+.resu{
+  width: 15%;
+  padding-bottom: 15%;
+  position: relative;
+  display: none;
+
+  IMG {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    border: 2px solid white;
+    position: absolute;
+    left: 0;
+
+  }
+
+}

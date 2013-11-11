@@ -4,8 +4,8 @@ class Kick < ActiveRecord::Base
   has_many :rsvps
   has_many :avatars
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" , :large => "600x600" }, :default_url => "/images/:style/missing.png"
-  has_attached_file :user_avatar, :styles => { :medium => "300x300>", :thumb => "100x100>"}, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" , :large => "600x600" }, :default_url => "/assets/default.jpg"
+  has_attached_file :user_avatar, :styles => { :medium => "300x300>", :thumb => "100x100>"}, :default_url => "/assets/default.jpg"
 
   validates_presence_of :title,  :location, :description, :time
 

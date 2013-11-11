@@ -19,10 +19,20 @@
         <%= f.password_field :password_confirmation, class: "form-control"  %>
     </div>
 
-    <div><%= f.label :avatar %><br />
+    <div>
+        <%= f.label :filepicker_url, "Upload a photo from the cloud:" %>
+        <%= f.filepicker_field :filepicker_url,
+                               :'data-fp-apikey' => 'ARSPEML9RTdartRlwYl8hz', :'data-fp-container' => 'modal',
+                               :'data-fp-mimetypes' => '*/*', :'data-fp-services' => 'COMPUTER,IMAGE_SEARCH,DROPBOX,FACEBOOK,GITHUB,GOOGLE_DRIVE,FLICKR,GMAIL,INSTAGRAM,PICASA',
+                               class: "btn btn-default", onchange:"pickPic(event)"%>
+    </div>
+
+    <div><%= f.label :avatar, "Upload a photo from your computer" %><br />
         <%= f.file_field :avatar, class: "form-control"  %>
     </div>
     <br>
+
+    <div class="resu"></div>
 
     <div id="slider1" class="ui-slider">
     </div>
@@ -52,3 +62,14 @@
 <% end %>
 
 <%= render "users/shared/links" %>
+
+<script type="text/javascript">
+
+    function pickPic(data){
+        console.log(data);
+        var photo = data.fpfile.url;
+        var ele = jQuery('.resu')[0];
+        var imgres = '<img src=" ' + photo + ' ">';
+        jQuery(ele).fadeIn(800).append(imgres);
+    }
+</script>

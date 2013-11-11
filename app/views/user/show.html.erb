@@ -1,28 +1,36 @@
 <div class="user-show">
-    <br>
-    <% if @user.avatar_content_type == "image/jpeg"  %>
-        <%= image_tag @user.avatar.url(:medium), class: "img-rounded img-responsive" %>
-    <% end %>
-    <br>
-
-    <blockquote>
+    <div class="row">
         <br>
-        <i class="fa fa-check-square"></i><%= @user.drunkness %>
-        <br>
-        <i class="fa fa-check-square"></i><%= @user.smartness %>
-        <br>
-        <i class="fa fa-check-square"></i><%= @user.loudness %>
-        <br>
-    </blockquote>
-
-    <div class="users-kicks">
-        <h1><%= @user.permalink %>'s kicks</h1>
-        <ul>
-            <% @user.kicks.each do |kick| %>
-                <li>
-                    <i class="fa fa-beer"></i> &nbsp; <h3><%= link_to kick.title, kick_path(kick.id) %></h3>
-                </li>
+        <div class="imageContainer">
+            <% if @user.avatar_content_type == "image/jpeg"  %>
+                <%= image_tag @user.avatar.url(:medium), class: "img-rounded img-responsive" %>
+            <% elsif @user.filepicker_url != ""  %>
+                <%= filepicker_image_tag @user.filepicker_url, w: 160, h: 160, fit: 'clip', class: "img-rounded img-responsive" %>
+            <% else %>
+                <img src="/assets/default.jpg">
             <% end %>
-        </ul>
+        </div>
+        <br>
+
+        <blockquote>
+            <br>
+            <i class="fa fa-check-square"></i><%= @user.drunkness %>
+            <br>
+            <i class="fa fa-check-square"></i><%= @user.smartness %>
+            <br>
+            <i class="fa fa-check-square"></i><%= @user.loudness %>
+            <br>
+        </blockquote>
+
+        <div class="users-kicks">
+            <h1><%= @user.permalink %>'s kicks</h1>
+            <ul>
+                <% @user.kicks.each do |kick| %>
+                    <li>
+                        <i class="fa fa-beer"></i> &nbsp; <h3><%= link_to kick.title, kick_path(kick.id) %></h3>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
     </div>
 </div>

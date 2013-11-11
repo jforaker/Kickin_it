@@ -12,6 +12,14 @@ load({
     }
 }, function (controller, action) {
 
+    function pick(data){
+        console.log(data);
+        var photo = data.fpfile.url;
+        var ele = jQuery('.res')[0];
+        var imgres = '<img src=" ' + photo + ' ">';
+        jQuery(ele).fadeIn(800).append(imgres);
+    }
+
     //get the url parameter ?location= and populate the form with it
 
     function getURLParameter(name) {
@@ -203,6 +211,8 @@ load("user#edit", function (controller, action) {
 
 load("registrations#new", function (controller, action) {
 
+
+
     var slidervals = {
         loudness: {
             0: "Quiet",
@@ -312,9 +322,12 @@ load("kicks#show", function (controller, action) {
     var icon = jQuery('#time')[0];
 
     var url = window.kickURL,
-        currentTime = window.currentTime;
+        currentTime = window.currentTime,
+        signInTime = window.signInTime;
 
-    console.log(currentTime);
+    if (moment())
+
+        console.log(currentTime + '    ' + signInTime);
 
     jQuery.getJSON(url, {}, function(data) {
 
@@ -328,6 +341,55 @@ load("kicks#show", function (controller, action) {
         }
 
     });
+
+
+});
+
+load("home#index", function (controller, action) {
+    var icons = jQuery('.fa.fa-clock-o');
+    var currentTime = window.currentTime,
+        signInTime = window.signInTime;
+
+
+    console.log(moment().format() + '    ' + moment().format(signInTime));
+
+
+
+    jQuery.getJSON('/index.json', {}, function(data) {
+
+        for (var i = 0; i < icons.length; i ++){
+
+            var icon = icons[i];
+
+            var kickTimeAmPm = data[i].time,
+                kickCreatedAt = data[i].created_at,
+                kickTime = kickTimeAmPm.slice(0, -2);
+
+
+            var kickWasMade = moment(kickCreatedAt)._d;
+
+            if (moment(moment(kickWasMade)._d).isBefore(currentTime)){     //if kick is before current time = add class green
+                  jQuery(icon).addClass('early');
+                console.log('early')   ;
+            }
+
+            if (moment(currentTime).isBefore(moment(kickWasMade)._d)){
+                jQuery(icon).addClass('late');
+                console.log('late')
+
+            }
+
+        }
+    });
+
+    var mapbox = jQuery('#mapbox')[0];
+    var fs = jQuery('#fs')[0];
+    jQuery(mapbox).hover(function(){
+        jQuery(fs).fadeIn(500).addClass('showing');
+
+    });
+
+
 
 
 });
