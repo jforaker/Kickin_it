@@ -1,3 +1,25 @@
+@import "_flat-ui";
+
+@import '../../../vendor/assets/stylesheets/bootstrap/bootstrap.scss';
+@import "../../../vendor/assets/stylesheets/flat-ui-sass/flat-ui.sass";
+@import 'leaflet.css';
+@import "_user-show";
+@import "_home-index";
+@import "_mapbox-leaflet";
+@import "_kick-show";
+@import "_kick-new";
+@import "_user-new";
+
+
+
+
+
+.navbar-right{
+  position: absolute;
+  right: 0px;
+  top: 12px;
+}
+
 .login-form:before {
   content: none;
 }
@@ -6,60 +28,16 @@
   overflow-y: auto;
 }
 
-.main{
-  width: 100%;
-  position: absolute;
 
-  .sidebar{
-    position: absolute;
-    top: 0;
-    left: o;
-    left: 0;
-    background: rgba(0, 0, 0, 0.54);
-    color: white;
-    padding: 10px;
 
-    .profile-img{
-      height: 80px;
-      width: 80px;
-      background: gray;
-    }
-  }
-
-  .kicks-all{
-    position: absolute;      z-index: 2;
-    background: rgba(0, 0, 0, 0.64);
-    width: 427px;
-    right: 0;
-    color: white;top: 0;
-    padding: 24px;
-    height: 633px;
-    overflow-y: scroll;
-
-    .kick-contr {
-      margin: 32px 0 20px 0;
-      border-top: 1px solid rgba(128, 128, 128, 0.26);
-
-      .title {
-        height:20px;
-        display: inline-block;
-      }
-      .loc {
-        height:20px;
-        display: inline-block;
-      }
-      .desc{
-        height: 80px;
-      }
-      .in{
-        display:block;
-      }
-    }
-  }
+#slider1, #slider2, #slider3, #deb-scale{
+  width: 217px;
 }
 
-#slider1, #slider2, #slider3{
-  width: 217px;
+input[type="file"]{
+  height: 45px;
+  border: 4px dotted rgba(128, 128, 128, 0.31);
+  margin-bottom: 19px;
 }
 
 .ui-slider-handle {
@@ -69,202 +47,40 @@
   width: 40px !important;
 }
 
-#mapbox {
-  height: 680px;
-  position: relative;
-
-  .leaflet-left {
-    left: 145px !important;
-  }
-  .leaflet-control-attribution.leaflet-control a{
-    display: none !important;
-  }
-
-  .added {
-    border: 5px dashed #3498db;
-    display: none;
-    margin-left: -29px;
-    margin-top: -53px;
-    width: 48px;
-    height: 48px;
-    border-radius: 24px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 1 !important;
-    z-index: 4444;
-  }
-
-
-  .leaflet-marker-icon {
-    //  background: url(https://foursquare.com/img/pin-blue-transparent.png);
-    //  padding: 6px;
-    //  padding-bottom: 17px;
-    //  top: -6px;
-    //  left: -6px;
-    //  width: 43px !important;
-    //  height: 55px !important;
-    //  padding-left: 7px;
-    &.selected{
-
-    }
-  }
-}
 
 /* font-awesome */
 
 .fa{
   color: rgb(7, 166, 216);
   font-size: 46px;
-}
 
-.anim{
-  margin-left: -14px !important;
-  margin-top: -12px !important;
-  width: 48px !important;
-  height: 48px !important;
-  border-radius: 24px;
-  opacity: 1 !important;
-}
+  .fa-clock-o{
 
 
-.leaflet-center {
-  width: 40%;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-}
+    &.early{
+      color: green !important;
+    }
 
-.leaflet-control-geosearch {
-  border-radius: 7px;
-  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.25);
-  margin: 10px 0 0 206px;
-  padding: 5px;
-  width: 100%;
-  height: auto;
-  ul {
-    border-radius: 7px;
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.25);
-    margin: 10px 0 0 206px;
-    padding: 5px;
-    width: 100%;
-    height: auto;
-  }
-}
-
-.leaflet-control-geosearch-msg ul {
-  list-style: none;
-  display: none;
-  height: auto;
-  background: none;
-  padding: 0;
-}
-
-.leaflet-control-geosearch{
-  ul{
-    li {
-      background: none repeat scroll 0 0 rgba(255, 255, 255, 0.75);
-      border-radius: 4px;
-      margin: 2px 0;
-      padding: 4px;
-      font: 12px arial;
-      text-indent: 4px;
+    &.late{
+      color: red !important;
     }
   }
+
 }
 
-.leaflet-container .leaflet-control-geosearch input {
-  width: 100%;
-  height: 28px;
-  padding: 0;
-  text-indent: 8px;
-  background: rgba(255, 255, 255, 0.75);
-  border-radius: 4px;
-  border: none;
+IMG{
+  cursor: pointer;
 }
 
-/* timepicker styles */
+
+.main{
+  margin: 10px 0 10px 0;
+}
 
 
-.ui-timepicker-wrapper {
-  overflow-y: auto;
-  height: 150px;
-  width: 6.5em;
-  background: #fff;
-  border: 1px solid #ddd;
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  outline: none;
-  z-index: 10001;
-  margin: 0;
-  &.ui-timepicker-with-duration {
-    width: 11em;
+@media (min-width: 1200px)  {
+  .container {
+    max-width: 90%;
   }
 }
 
-.ui-timepicker-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.ui-timepicker-duration {
-  margin-left: 5px;
-  color: #888;
-}
-
-.ui-timepicker-list {
-  &:hover .ui-timepicker-duration {
-    color: #888;
-  }
-  li {
-    padding: 3px 0 3px 5px;
-    cursor: pointer;
-    white-space: nowrap;
-    color: #000;
-    list-style: none;
-    margin: 0;
-  }
-  &:hover .ui-timepicker-selected {
-    background: #fff;
-    color: #000;
-  }
-}
-
-li.ui-timepicker-selected {
-  background: #1980EC;
-  color: #fff;
-}
-
-.ui-timepicker-list {
-  li:hover, .ui-timepicker-selected:hover {
-    background: #1980EC;
-    color: #fff;
-  }
-}
-
-li.ui-timepicker-selected .ui-timepicker-duration {
-  color: #ccc;
-}
-
-.ui-timepicker-list li {
-  &:hover .ui-timepicker-duration {
-    color: #ccc;
-  }
-  &.ui-timepicker-disabled {
-    color: #888;
-    cursor: default;
-    &:hover {
-      color: #888;
-      cursor: default;
-    }
-  }
-  &.ui-timepicker-selected.ui-timepicker-disabled {
-    color: #888;
-    cursor: default;
-  }
-  &.ui-timepicker-disabled:hover, &.ui-timepicker-selected.ui-timepicker-disabled {
-    background: #f2f2f2;
-  }
-}

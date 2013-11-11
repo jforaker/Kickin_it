@@ -18,6 +18,13 @@
 //= require l.control.geosearch
 //= require l.geosearch.provider.google
 //= require loadjs
+//= require animate
+//= require geosearch
+//= require bootstrap-min
+//= require timepicker
+//= require moment
+
+
 //= require_tree .
 
 

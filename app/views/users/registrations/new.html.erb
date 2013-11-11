@@ -1,46 +1,75 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :multipart => true })  do |f| %>
     <%= devise_error_messages! %>
 
     <div><%= f.label :name %><br />
-      <%= f.text_field :name, :autofocus => true, class: "form-control"  %></div>
+        <%= f.text_field :name, :autofocus => true, class: "form-control"  %>
+    </div>
 
     <div><%= f.label :email %><br />
-      <%= f.email_field :email, class: "form-control"  %></div>
+        <%= f.email_field :email, class: "form-control"  %>
+    </div>
 
     <div><%= f.label :password %><br />
-      <%= f.password_field :password, class: "form-control"  %></div>
+        <%= f.password_field :password, class: "form-control"  %>
+    </div>
 
     <div><%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, class: "form-control"  %></div>
+        <%= f.password_field :password_confirmation, class: "form-control"  %>
+    </div>
+
+    <div>
+        <%= f.label :filepicker_url, "Upload a photo from the cloud:" %>
+        <%= f.filepicker_field :filepicker_url,
+                               :'data-fp-apikey' => 'ARSPEML9RTdartRlwYl8hz', :'data-fp-container' => 'modal',
+                               :'data-fp-mimetypes' => '*/*', :'data-fp-services' => 'COMPUTER,IMAGE_SEARCH,DROPBOX,FACEBOOK,GITHUB,GOOGLE_DRIVE,FLICKR,GMAIL,INSTAGRAM,PICASA',
+                               class: "btn btn-default", onchange:"pickPic(event)"%>
+    </div>
+
+    <div><%= f.label :avatar, "Upload a photo from your computer" %><br />
+        <%= f.file_field :avatar, class: "form-control"  %>
+    </div>
     <br>
+
+    <div class="resu"></div>
 
     <div id="slider1" class="ui-slider">
     </div>
     <p>
-      <label for="talklevels-label"></label>
-      <!--<input data-param="smartness" type="text" id="levels1" style="border: 0; color: #f6931f; font-weight: bold;" />-->
-      <%= f.text_field :loudness, class: "form-control", :id => "levels1", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
+        <label for="talklevels-label"></label>
+        <!--<input data-param="smartness" type="text" id="levels1" style="border: 0; color: #f6931f; font-weight: bold;" />-->
+        <%= f.text_field :loudness, class: "form-control", :id => "levels1", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
     </p>
 
     <div id="slider2" class="ui-slider">
     </div>
     <p>
-      <label for="talklevels-label"></label>
-      <!--<input data-param="drunkness" type="text" id="levels2" style="border: 0; color: #f6931f; font-weight: bold;" />-->
-      <%= f.text_field :drunkness, class: "form-control", :id => "levels2", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
+        <label for="talklevels-label"></label>
+        <!--<input data-param="drunkness" type="text" id="levels2" style="border: 0; color: #f6931f; font-weight: bold;" />-->
+        <%= f.text_field :drunkness, class: "form-control", :id => "levels2", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
     </p>
 
     <div id="slider3" class="ui-slider">
     </div>
     <p>
-      <label for="talklevels-label"></label>
-      <!--<input data-param="smartness" type="text" id="levels3" style="border: 0; color: #f6931f; font-weight: bold;" />-->
-      <%= f.text_field :smartness, class: "form-control",:id => "levels3", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
+        <label for="talklevels-label"></label>
+        <!--<input data-param="smartness" type="text" id="levels3" style="border: 0; color: #f6931f; font-weight: bold;" />-->
+        <%= f.text_field :smartness, class: "form-control",:id => "levels3", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
     </p>
 
     <div><%= f.submit "Sign up", :class => "btn btn-primary" , :id => "new-profile"%></div>
 <% end %>
 
 <%= render "users/shared/links" %>
+
+<script type="text/javascript">
+
+    function pickPic(data){
+        console.log(data);
+        var photo = data.fpfile.url;
+        var ele = jQuery('.resu')[0];
+        var imgres = '<img src=" ' + photo + ' ">';
+        jQuery(ele).fadeIn(800).append(imgres);
+    }
+</script>

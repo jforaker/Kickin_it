@@ -17,7 +17,7 @@ class UserController < ApplicationController
 
   def update
     @user = User.find_by_id(current_user.id)
-    user_params = params.require(:user).permit(:smartness, :loudness, :drunkness)
+    user_params = params.require(:user).permit(:smartness, :loudness, :drunkness, :avatar, :filepicker_url)
     respond_to do |format|
       if @user.update_attributes(user_params)
         format.html { redirect_to user_path(@user.permalink), notice: 'Profile was successfully updated.' }
@@ -32,7 +32,7 @@ class UserController < ApplicationController
   private
 
   def user_params
-    params.require('user').permit(:smartness, :loudness, :drunkness)
+    params.require('user').permit(:smartness, :loudness, :drunkness, :avatar, :filepicker_url)
   end
 
 end

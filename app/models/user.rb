@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :kicks
   has_many :rsvps
 
-  acts_as_tagger
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 
   def user_id
     current_user.id

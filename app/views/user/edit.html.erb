@@ -1,35 +1,50 @@
-<h1>Edit Profile (user)</h1>
+<h1>Edit Profile </h1>
 
-<br>
+<% if @user.avatar_content_type %>
+    <%= image_tag @user.avatar.url(:medium) %>
+<% end %>
 
 <%= form_for(@user) do |f| %>
     <% if @user.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this location from being saved:</h2>
-          <ul>
-            <% @user.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this location from being saved:</h2>
+            <ul>
+                <% @user.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
         </div>
     <% end %>
 
+    <% if !@user.avatar_content_type %>
+        <div><%= f.label :avatar %><br />
+            <%= f.file_field :avatar, class: "form-control"  %>
+        </div>
+    <% end %>
+
+    <br>
+
+    <div>
+        <%= f.label :filepicker_url, "Upload Your Avatar:" %>
+        <%= f.filepicker_field :filepicker_url %> <!-- User#filepicker_url is a regular string column -->
+    </div>
+
     <div id="slider1" class="ui-slider"></div>
     <p>
-      <label for="talklevels-label"></label>
-      <%= f.text_field :loudness, class: "form-control", :id => "levels1", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
+        <label for="talklevels-label"></label>
+        <%= f.text_field :loudness, class: "form-control", :id => "levels1", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
     </p>
 
     <div id="slider2" class="ui-slider"></div>
     <p>
-      <label for="talklevels-label"></label>
-      <%= f.text_field :smartness, class: "form-control",:id => "levels2", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
+        <label for="talklevels-label"></label>
+        <%= f.text_field :smartness, class: "form-control",:id => "levels2", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
     </p>
 
     <div id="slider3" class="ui-slider"></div>
     <p>
-      <label for="talklevels-label"></label>
-      <%= f.text_field :drunkness, class: "form-control", :id => "levels3", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
+        <label for="talklevels-label"></label>
+        <%= f.text_field :drunkness, class: "form-control", :id => "levels3", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
 
     </p>
 

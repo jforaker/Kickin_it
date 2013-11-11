@@ -12,6 +12,13 @@ load({
     }
 }, function (controller, action) {
 
+    function pick(data){
+        console.log(data);
+        var photo = data.fpfile.url;
+        var ele = jQuery('.res')[0];
+        var imgres = '<img src=" ' + photo + ' ">';
+        jQuery(ele).fadeIn(800).append(imgres);
+    }
 
     //get the url parameter ?location= and populate the form with it
 
@@ -26,7 +33,6 @@ load({
         lng = getURLParameter("Lng"),
         spot = spoturl.toString().replace(/-/g, ' ');
 
-    //TODO -- something with location
 
     if (lat !== undefined && lat !== "null"){
         $('input#kick_latitude').val(lat);
@@ -54,9 +60,9 @@ load({
     var debVals = {
         scale: {
             0: "Sipping some pinot",
-            25: "definitely more than one",
-            50: "something middle",
-            75: "A riot",
+            25: "Definitely more than one",
+            50: "Could get ugly",
+            75: "A total riot",
             100: "Jail in our future"
         }
     };
@@ -116,9 +122,9 @@ load("user#edit", function (controller, action) {
         },
         smartness: {
             0: "reeding iz guhd",
-            25: "GED is good for me",
+            25: "Keanu Reeves",
             50: "5th year of community college",
-            75: "Average Joe",
+            75: "An intellectual",
             100: "PhD"
         }
     };
@@ -204,6 +210,8 @@ load("user#edit", function (controller, action) {
 
 
 load("registrations#new", function (controller, action) {
+
+
 
     var slidervals = {
         loudness: {
@@ -308,4 +316,80 @@ load("registrations#new", function (controller, action) {
 //            }
 //        });
     });
+});
+
+load("kicks#show", function (controller, action) {
+    var icon = jQuery('#time')[0];
+
+    var url = window.kickURL,
+        currentTime = window.currentTime,
+        signInTime = window.signInTime;
+
+    if (moment())
+
+        console.log(currentTime + '    ' + signInTime);
+
+    jQuery.getJSON(url, {}, function(data) {
+
+        var kickTimeAmPm = data.time,
+            kickTime = kickTimeAmPm.slice(0, -2);
+
+        console.log(kickTime)
+
+        if (currentTime > kickTime){
+            jQuery(icon).addClass('late');
+        }
+
+    });
+
+
+});
+
+load("home#index", function (controller, action) {
+    var icons = jQuery('.fa.fa-clock-o');
+    var currentTime = window.currentTime,
+        signInTime = window.signInTime;
+
+
+    console.log(moment().format() + '    ' + moment().format(signInTime));
+
+
+
+    jQuery.getJSON('/index.json', {}, function(data) {
+
+        for (var i = 0; i < icons.length; i ++){
+
+            var icon = icons[i];
+
+            var kickTimeAmPm = data[i].time,
+                kickCreatedAt = data[i].created_at,
+                kickTime = kickTimeAmPm.slice(0, -2);
+
+
+            var kickWasMade = moment(kickCreatedAt)._d;
+
+            if (moment(moment(kickWasMade)._d).isBefore(currentTime)){     //if kick is before current time = add class green
+                  jQuery(icon).addClass('early');
+                console.log('early')   ;
+            }
+
+            if (moment(currentTime).isBefore(moment(kickWasMade)._d)){
+                jQuery(icon).addClass('late');
+                console.log('late')
+
+            }
+
+        }
+    });
+
+    var mapbox = jQuery('#mapbox')[0];
+    var fs = jQuery('#fs')[0];
+    jQuery(mapbox).hover(function(){
+        jQuery(fs).fadeIn(500).addClass('showing');
+
+    });
+
+
+
+
 });

@@ -1,8 +1,17 @@
 <div class="sidebar">
-  <img class="profile-img">
-  <h3><%= current_user.name %></h3>       <!--do something with current_user.sign_in_count  !!!   -->
-  <p> <%=link_to "Edit Profile", edit_user_path(current_user.permalink) %> </p>
+    <div class="imageContainer">
+        <% if current_user.avatar_content_type %>
+            <%= image_tag current_user.avatar.url(:medium) %>
+        <% elsif current_user.filepicker_url != "" %>
+            <%= filepicker_image_tag current_user.filepicker_url, w: 160, h: 160, fit: 'clip' %>
 
-  <p><%= @user %> is my id</p>
-  <p><%= link_to current_user.kicks.count, mykicks_path  %> kicks posted</p>
+        <% else %>
+            <img src="/assets/default.jpg">
+        <% end %>
+    </div>
+
+    <h3><%= current_user.name %></h3>       <!--do something with current_user.sign_in_count  !!!   -->
+    <p> <%=link_to "Edit Profile", edit_user_path(current_user.permalink) %> </p>
+
+    <p><%= link_to current_user.kicks.count, mykicks_path  %> kicks posted</p>
 </div>

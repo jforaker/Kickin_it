@@ -10,7 +10,7 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="navbar-header">
     <%= link_to "Kickin It", root_path, class:"navbar-brand"  %>
-    <ul class="nav navbar-nav navbar-right" style="position: absolute; right: 0px;">
+    <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
           <li><a href="#"><%= current_user.email %></a></li>
           <li><%=link_to "Account", edit_user_registration_path %></li>
@@ -49,6 +49,11 @@
 
     <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
     <script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+    <%= javascript_tag do %>
+        window.currentTime = ('<%= j Time.now.strftime("%Y-%m-%d %H:%M:%S") %>');
+    <% end %>
+    <%= filepicker_js_include_tag %>
+
 </div>
 
 

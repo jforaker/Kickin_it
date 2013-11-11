@@ -5,6 +5,10 @@ class KicksController < ApplicationController
   def show
     @kick = Kick.find(params[:id])
     @user = current_user.name
+    respond_to do |format|
+      format.html
+      format.json { render json: @kick }
+    end
   end
 
   def new
@@ -12,10 +16,16 @@ class KicksController < ApplicationController
   end
 
   def create
-    kick_params = params.require(:kick).permit(:title, :description, :time, :location, :user_id, :latitude, :longitude, :name, :scale)
+    @user = current_user
+    kick_params = params.require(:kick).permit(:title, :description, :time, :location, :user_id, :latitude, :longitude,
+                                               :name, :scale, :avatar,
+                                               :user_avatar, :filepicker_url, :filepicker_avatar_url)
     @kick = Kick.new(kick_params)
-    @kick.user_id = current_user.id
-    @kick.username = current_user.name
+    @kick.user_id = @user.id
+    @kick.username = @user.name
+    @kick.user_avatar = @user.avatar
+    @kick.filepicker_avatar_url = @user.filepicker_url
+
     if @kick.save
       redirect_to @kick  #shows that kick
     else
@@ -32,7 +42,9 @@ class KicksController < ApplicationController
   # PUT /kicks/1.json
   def update
     @kick = Kick.find(params[:id])
-    kick_params = params.require(:kick).permit(:title, :description, :time, :location, :user_id, :latitude, :longitude, :name, :scale)
+    kick_params = params.require(:kick).permit(:title, :description, :time, :location, :user_id, :latitude, :longitude,
+                                               :name, :scale, :avatar,
+                                               :user_avatar, :filepicker_url, :filepicker_avatar_url)
 
     respond_to do |format|
       if @kick.update_attributes(kick_params)
@@ -58,6 +70,6 @@ class KicksController < ApplicationController
   private
 
   def kick_params
-    params.require('kick').permit(:title, :description, :time, :location, :user_id, :latitude, :longitude, :name, :scale)
+    params.require('kick').permit(:title, :description, :time, :location, :user_id, :latitude, :longitude, :name, :scale, :avatar)
   end
 end
