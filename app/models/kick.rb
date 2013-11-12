@@ -4,6 +4,8 @@ class Kick < ActiveRecord::Base
   belongs_to :user
   has_many :avatars
 
+  attr_accessor  :user_avatar_file_name
+
   #for paperclip files saving to Amazon s3
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" , :large => "600x600" },
                     :default_url => "/assets/default.jpg"    ,
