@@ -1,0 +1,9 @@
+development:
+  bucket: kickin_it_s3
+  access_key_id: AKIAI3GRD7OSN3HZBTTQ
+  secret_access_key: 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
+
+production:
+  bucket: kickin_it_s3
+  access_key_id: AKIAI3GRD7OSN3HZBTTQ
+  secret_access_key: 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
