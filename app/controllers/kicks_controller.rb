@@ -17,9 +17,11 @@ class KicksController < ApplicationController
 
   def create
     @user = current_user
-    kick_params = params.require(:kick).permit(:title, :description, :time, :location, :user_id, :latitude, :longitude,
-                                               :name, :scale, :avatar,
-                                               :user_avatar, :filepicker_url, :filepicker_avatar_url)
+    kick_params = params.require(:kick).permit(:title, :description, :time, :location, :user_id,
+                                               :latitude, :longitude,
+                                               :name, :scale,
+                                               :avatar, :user_avatar_file_name,:user_avatar,
+                                               :filepicker_url, :filepicker_avatar_url)
     @kick = Kick.new(kick_params)
     @kick.user_id = @user.id
     @kick.username = @user.name
