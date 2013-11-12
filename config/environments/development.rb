@@ -26,4 +26,27 @@ KickinIt::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # Amazon S3 settings for Paperclip uploads
+  #config.paperclip_defaults = {
+  #    :storage => :s3,
+  #    :s3_protocol => 'http',
+  #    :bucket => ENV['kickin_it_s3'],
+  #    :s3_credentials => {
+  #        :bucket => ENV['kickin_it_s3'],
+  #        :access_key_id => ENV['AKIAI3GRD7OSN3HZBTTQ'],
+  #        :secret_access_key => ENV['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 ']
+  #    }
+  #}
+
+  #Paperclip.options[:command_path] = "/usr/local/bin/"
+
+  config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => {
+          :bucket => ENV['AWS_BUCKET'],
+          :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+          :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+      }
+  }
 end

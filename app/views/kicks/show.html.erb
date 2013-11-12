@@ -1,15 +1,19 @@
 <div class="kick-show">
-    <div class="row"  style="background-image: url(<%= @kick.filepicker_url %>)">
+    <div class="row"  style="background-image: url(
+            <% if @kick.avatar_content_type  %>
+            <%= @kick.avatar.url(:large)  %>
+            <% else %>
+            <%= @kick.filepicker_url %>
+            <% end %>
+            )">
         <div class="col-lg-8">
             <div class="party">
                 <div class="pull-left" href="#">
                     <div class="imageContainer">
-                        <% if @kick.filepicker_avatar_url %>
+                        <% if @kick.filepicker_avatar_url.nil? %>
                             <%= filepicker_image_tag @kick.filepicker_avatar_url, w: 160, h: 160, fit: 'clip' %>
                         <% elsif @kick.avatar_file_size != 'nil' %>
                             <%= image_tag @kick.user_avatar.url(:thumb), :class => "pic img-rounded img-responsive"   %>
-
-
                         <% else %>
                             <img src="/assets/default.jpg">
                         <% end %>
@@ -30,7 +34,7 @@
 <br>
 
 <% if @kick.username == current_user.permalink %>
- <%= link_to "This looks like your kick. Edit it?", edit_kick_path(@kick.id), class: "btn btn-warning btn-wide pull-right" %>
+    <%= link_to "This looks like your kick. Edit it?", edit_kick_path(@kick.id), class: "btn btn-warning btn-wide pull-right" %>
 <% end %>
 
 <%= javascript_tag do %>

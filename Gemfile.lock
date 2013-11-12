@@ -29,6 +29,14 @@ GEM
       rake
     arel (4.0.0)
     atomic (1.1.14)
+    aws-s3 (0.6.3)
+      builder
+      mime-types
+      xml-simple
+    aws-sdk (1.25.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4, < 1.6.0)
+      uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
@@ -39,7 +47,10 @@ GEM
       sass (~> 3.2)
     builder (3.1.4)
     callsite (0.0.11)
-    cocaine (0.4.2)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.3)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -62,6 +73,7 @@ GEM
     font-awesome-sass (4.0.1)
       sass-rails (>= 3.1.1)
     hike (1.2.3)
+    http_connection (1.4.4)
     i18n (0.6.5)
     jbuilder (1.5.2)
       activesupport (>= 3.0.0)
@@ -83,12 +95,13 @@ GEM
     mime-types (1.25)
     minitest (4.7.5)
     multi_json (1.8.2)
+    nokogiri (1.5.10)
     orm_adapter (0.4.0)
-    paperclip (3.4.0)
+    paperclip (3.4.2)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
-      cocaine (~> 0.4.0)
+      cocaine (~> 0.5.0)
       mime-types
     pg (0.17.0)
     polyglot (0.3.3)
@@ -153,16 +166,20 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uuidtools (2.1.4)
     validates_timeliness (3.0.14)
       timeliness (~> 0.3.6)
     warden (1.2.3)
       rack (>= 1.0)
+    xml-simple (1.1.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   annotate
+  aws-s3
+  aws-sdk
   bcrypt-ruby
   better_errors
   binding_of_caller
@@ -171,6 +188,7 @@ DEPENDENCIES
   devise
   filepicker-rails
   font-awesome-sass
+  http_connection (~> 1.4.4)
   jbuilder (~> 1.2)
   jquery-rails
   loadjs

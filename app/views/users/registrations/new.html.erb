@@ -3,22 +3,31 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :multipart => true })  do |f| %>
     <%= devise_error_messages! %>
 
-    <div><%= f.label :name %><br />
+    <div>
+        <%= f.label :name %>
+        <br />
         <%= f.text_field :name, :autofocus => true, class: "form-control"  %>
     </div>
 
-    <div><%= f.label :email %><br />
+    <div>
+        <%= f.label :email %>
+        <br />
         <%= f.email_field :email, class: "form-control"  %>
     </div>
 
-    <div><%= f.label :password %><br />
+    <div>
+        <%= f.label :password %>
+        <br />
         <%= f.password_field :password, class: "form-control"  %>
     </div>
 
-    <div><%= f.label :password_confirmation %><br />
+    <div>
+        <%= f.label :password_confirmation %>
+        <br />
         <%= f.password_field :password_confirmation, class: "form-control"  %>
     </div>
 
+    <!--Saves to filepicker.io-->
     <div>
         <%= f.label :filepicker_url, "Upload a photo from the cloud:" %>
         <%= f.filepicker_field :filepicker_url,
@@ -27,7 +36,10 @@
                                class: "btn btn-default", onchange:"pickPic(event)"%>
     </div>
 
-    <div><%= f.label :avatar, "Upload a photo from your computer" %><br />
+    <!--Saves to s3-->
+    <div>
+        <%= f.label :avatar, "Upload a photo from your computer" %>
+        <br />
         <%= f.file_field :avatar, class: "form-control"  %>
     </div>
     <br>
@@ -38,7 +50,6 @@
     </div>
     <p>
         <label for="talklevels-label"></label>
-        <!--<input data-param="smartness" type="text" id="levels1" style="border: 0; color: #f6931f; font-weight: bold;" />-->
         <%= f.text_field :loudness, class: "form-control", :id => "levels1", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
     </p>
 
@@ -46,7 +57,6 @@
     </div>
     <p>
         <label for="talklevels-label"></label>
-        <!--<input data-param="drunkness" type="text" id="levels2" style="border: 0; color: #f6931f; font-weight: bold;" />-->
         <%= f.text_field :drunkness, class: "form-control", :id => "levels2", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
     </p>
 
@@ -54,7 +64,6 @@
     </div>
     <p>
         <label for="talklevels-label"></label>
-        <!--<input data-param="smartness" type="text" id="levels3" style="border: 0; color: #f6931f; font-weight: bold;" />-->
         <%= f.text_field :smartness, class: "form-control",:id => "levels3", :style => "border: 0; color: #f6931f; font-weight: bold;"  %>
     </p>
 

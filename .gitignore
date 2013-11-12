@@ -17,3 +17,4 @@
 
 .idea/*
 public/system/users/*.*
+/config/s3.yml

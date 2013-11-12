@@ -10,13 +10,16 @@ gem 'devise'
 group :production do
   gem 'pg'
   gem 'rails_12factor'
-  gem 'unicorn'                   ## <<<<<<   --------     TODO - check this
+  gem 'unicorn'
 end
 group :development, :test do
   gem 'sqlite3'
 end
 
+gem 'aws-sdk'
+gem "aws-s3"
 
+gem "http_connection", "~> 1.4.4"
 gem 'multi_json'
 
 gem 'bcrypt-ruby'

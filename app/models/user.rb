@@ -13,7 +13,11 @@ class User < ActiveRecord::Base
   has_many :kicks
   has_many :rsvps
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  #for paperclip files saving to Amazon s3
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
+                    :default_url => "/images/:style/missing.png",
+                    :storage => :s3, :s3_credentials => "#{::Rails.root}/config/s3.yml"
+
 
   def user_id
     current_user.id
