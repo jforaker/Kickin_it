@@ -3,9 +3,9 @@
         <br>
         <div class="imageContainer">
             <% if @user.avatar_content_type == "image/jpeg"  %>
-                <%= image_tag @user.avatar.url(:medium), class: "img-rounded img-responsive" %>
+                <%= image_tag @user.avatar.url(:thumb), class: "img-rounded img-responsive" %>
             <% elsif @user.filepicker_url != ""  %>
-                <%= filepicker_image_tag @user.filepicker_url, w: 160, h: 160, fit: 'clip', class: "img-rounded img-responsive" %>
+                <%= filepicker_image_tag @user.filepicker_url, w: 110, h: 110, fit: 'clip', class: "img-rounded img-responsive" %>
             <% else %>
                 <img src="/assets/default.jpg">
             <% end %>
