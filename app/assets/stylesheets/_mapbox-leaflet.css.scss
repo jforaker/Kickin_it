@@ -3,11 +3,16 @@
   height: 680px;
   position: relative;
 
-  .leaflet-left {
-    left: 145px !important;
+  .leaflet-top.leaflet-left {
+    left: 165px !important;
   }
   .leaflet-control-attribution.leaflet-control a{
     display: none !important;
+  }
+
+  .leaflet-top.leaflet-center {
+    top: 0;
+    left: 20px !important;
   }
 
   .added {
