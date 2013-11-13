@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   #for paperclip files saving to Amazon s3
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
-                    :default_url => "/assets/default.jpg" ,
+                    :default_url => "https://s3.amazonaws.com/kickin_it_s3/icons/default.jpg" ,
                     :storage => :s3, :s3_credentials => "#{::Rails.root}/config/s3.yml"
 
 
