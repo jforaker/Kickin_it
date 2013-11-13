@@ -147,10 +147,12 @@ load("home#index", function (controller, action) {
                     res[i].longitude
                 );
 
+                var beer_data = $('#foobar').attr('data');
+
                 // Build icon for each kick location
                 var kickIcon = L.Icon.extend({
                     options: {
-                        iconUrl: 'assets/beer-icon.png',
+                        iconUrl: beer_data,
                         shadowUrl: null,
                         iconSize: new L.Point(40, 40),
                         iconAnchor: new L.Point(16, 41),
