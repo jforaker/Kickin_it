@@ -51,21 +51,23 @@ input[type="file"]{
 /* font-awesome */
 
 .fa{
-  color: rgb(7, 166, 216);
+  color: #3498db;
   font-size: 46px;
 
   .fa-clock-o{
 
 
-    &.early{
-      color: green !important;
-    }
 
-    &.late{
-      color: red !important;
-    }
   }
 
+}
+
+.early{
+  color: #3498db !important;
+}
+
+.late{
+  color: red !important;
 }
 
 IMG{

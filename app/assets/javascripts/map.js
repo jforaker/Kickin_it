@@ -53,8 +53,8 @@ load("home#index", function (controller, action) {
             });
 
             //add custom popup to marker
-            var popup =  '<h3> ' + LatLng + ' </h3><br />' +
-                '<a id="newkick" href="/kicks/new?Lat=' + latlng.lat + '&?Lng=' + latlng.lng +'">Kick it</a> ';
+            var popup =  '<a style="text-decoration: none id="newkick" href="/kicks/new?Lat=' + latlng.lat + '&?Lng=' + latlng.lng +'"><h1>Kick it</h1></a> ' +
+                '<h5> ' + LatLng + ' </h5><br />' ;
 
             //bind hover popup to current marker
             marker.on('mouseover', function(e) { this.openPopup(); })

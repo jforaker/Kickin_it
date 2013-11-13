@@ -351,7 +351,7 @@ load("home#index", function (controller, action) {
         signInTime = window.signInTime;
 
 
-    console.log(moment().format() + '    ' + moment().format(signInTime));
+    console.log(moment().format(currentTime) + '    ' + moment().format(signInTime));
 
 
 
@@ -368,7 +368,7 @@ load("home#index", function (controller, action) {
 
             var kickWasMade = moment(kickCreatedAt)._d;
 
-            if (moment(moment(kickWasMade)._d).isBefore(currentTime)){     //if kick is before current time = add class green
+            if ((moment(kickWasMade).unix()) < (moment(currentTime).unix())){     //if kick is before current time = add class green
                   jQuery(icon).addClass('early');
                 console.log('early')   ;
             }
