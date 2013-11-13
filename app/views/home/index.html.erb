@@ -5,8 +5,12 @@
 
     <div class="kicks-all">
         <button id="single-all" class="btn btn-info btn-block" data-text-single="Single view?" data-text-all="View All">Single view?</button>
+
+
         <% beer_icon = asset_path("beer-icon.png") %>
-        <div id="foobar" data=<%= beer_icon %> />
+        <div id="foobar" data=<%= beer_icon %>></div>
+
+
         <% @kicks.each do |kick| %>
 
             <div class="kick-contr kick-list-<%= kick.id %>" id="<%= kick.id %>" >
