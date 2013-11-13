@@ -52,3 +52,6 @@
     <br>
 </div>
 
+<%= javascript_tag do %>
+    window.signInTime = ('<%= current_user.current_sign_in_at %>');
+<% end %>
