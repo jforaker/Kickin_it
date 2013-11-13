@@ -44,11 +44,11 @@ load("home#index", function (controller, action) {
 //                icon: L.mapbox.marker.icon({'marker-color': '3498db'}),
                 icon: L.divIcon({
                     className: 'some-icon-class',
-                    html: '<img src="https://ss1.4sqi.net/img/categories/nightlife/bar.png">'
-                    //html: '<i class="fa fa-beer"></i>'
+                    //html: '<img src="https://ss1.4sqi.net/img/categories/nightlife/bar.png">'
+                    html: '<i class="fa fa-tint"></i>'
 
                 }),
-                iconSize: [15, 15],
+                //iconSize: [15, 15],
                 draggable: true
             });
 
@@ -150,9 +150,9 @@ load("home#index", function (controller, action) {
                 // Build icon for each kick location
                 var kickIcon = L.Icon.extend({
                     options: {
-                        iconUrl: 'https://ss1.4sqi.net/img/categories/nightlife/bar.png',
+                        iconUrl: 'assets/beer-icon.png',
                         shadowUrl: null,
-                        iconSize: new L.Point(32, 32),
+                        iconSize: new L.Point(40, 40),
                         iconAnchor: new L.Point(16, 41),
                         popupAnchor: new L.Point(0, -51),
                         className:  'kick-map-' + kickData.party_id
@@ -162,7 +162,7 @@ load("home#index", function (controller, action) {
 
                 var tpl =   '<h3> ' + kickData.title + ' </h3><br />' +
                     '<h5><a href="/user/'+kickData.created_by+'"> by ' + kickData.created_by + ' </a></h5><br />' +
-                    '<a id="newkick" href="/kicks/new?spot=' + kickData.lng + '">Kick it</a> ';
+                    '<a id="newkick" href="/kicks/new?spot=' + kickData.lng + '">Kick it | Join</a> ';
 
                 var marker = new L.Marker(latLng, {icon: icon})
                     .bindPopup(tpl, { closeButton: true })
@@ -225,8 +225,6 @@ load("home#index", function (controller, action) {
                 });
             }
         });
-
-        //TODO -- move Animate into assets
 
         jQuery( "#single-all" ).click(function(){
             jQuery(this).toggleClass('single-view');

@@ -12,6 +12,7 @@ module KickinIt
     config.filepicker_rails.api_key = "ARSPEML9RTdartRlwYl8hz"
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.paths << Rails.root.join("app", "assets", "images")
 
     config.assets.precompile += [
         'application.css'

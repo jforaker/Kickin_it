@@ -24,7 +24,7 @@
                     <% elsif (kick.filepicker_avatar_url != "") && (kick.user_avatar != 'nil') %>
                         <a href="user/<%= kick.username %>"> <%= filepicker_image_tag kick.filepicker_avatar_url, fit: 'clip' %></a>
                     <% else %>
-                        <a> <img src="/assets/default.jpg"></a>
+                        <a href="user/<%= kick.username %>"> <img src="/assets/default.jpg"></a>
                     <% end %>
 
                 </div>
