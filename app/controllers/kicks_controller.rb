@@ -25,7 +25,7 @@ class KicksController < ApplicationController
     @kick = Kick.new(kick_params)
     @kick.user_id = @user.id
     @kick.username = @user.name
-    @kick.user_avatar = @user.avatar
+    @kick.user_avatar = @user.avatar || ''
     @kick.filepicker_avatar_url = @user.filepicker_url
 
     if @kick.save
@@ -72,6 +72,6 @@ class KicksController < ApplicationController
   private
 
   def kick_params
-    params.require('kick').permit(:title, :description, :time, :location, :user_id, :latitude, :longitude, :name, :scale, :avatar)
+    params.require('kick').permit(:title, :description, :time, :location, :user_id, :latitude, :longitude, :name, :scale, :avatar, :user_avatar)
   end
 end

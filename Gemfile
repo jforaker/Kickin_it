@@ -66,6 +66,8 @@ gem 'timeliness'
 
 gem 'validates_timeliness', '~> 3.0'
 
+gem 'analytics-ruby', '<1.0'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 
   def index
     #@kicks = Kick.all.order("created_at DESC")
-    @kicks = Kick.where("created_at >= ?", 3.day.ago.utc).order("created_at DESC")
+    @kicks = Kick.where("created_at >= ?", 100.day.ago.utc).order("created_at DESC")
     #@user = current_user.id
     @user = User.find_by_permalink(params[:id])
 
