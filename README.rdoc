@@ -10,11 +10,12 @@ The target audience is males, ages 21-35, especially those new to NYC looking to
 
 Functionality:
   1. User can create a profile with some basic characteristics (quiet or loud, intellectual or shit-talker, don't drink or get wasted)
-     
-      1a. Log in with Facebook Oauth   
   2. User will post events with time and location, to be displayed on a map
   3. A "feed" will show the most recent event posts with corresponding map
   4. API - Google Maps or Foursquare (or both)
 
+In the works:
+  1. Login with Foursquare / Twitter
+  2. tag kicks, join kicks functionality
 
     
