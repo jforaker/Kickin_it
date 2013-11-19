@@ -1,4 +1,6 @@
-Kickin It
+=Kickin It
+==http://kickin-it.herokuapp.com
+
 =========
 
 Kickin It is a place for guys that want to kick it with other dudes and post low key events related to drinking. 
