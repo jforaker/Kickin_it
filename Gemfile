@@ -23,7 +23,7 @@ gem "aws-s3"
 gem "http_connection", "~> 1.4.4"
 gem 'multi_json'
 
-gem 'bcrypt-ruby'
+#gem 'bcrypt-ruby'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -60,13 +60,13 @@ gem 'font-awesome-sass'
 
 gem 'better_errors'
 
-gem 'annotate'
+#gem 'annotate'
 
-gem 'timeliness'
+#gem 'timeliness'
 
-gem 'validates_timeliness', '~> 3.0'
+#gem 'validates_timeliness', '~> 3.0'
 
-gem 'analytics-ruby', '<1.0'
+#gem 'analytics-ruby', '<1.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
