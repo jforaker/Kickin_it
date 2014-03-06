@@ -7,7 +7,7 @@ class KicksController < ApplicationController
     @user = current_user.name
     respond_to do |format|
       format.html
-      format.json { render json: @kick }
+      format.json { render :json => @kick }
     end
   end
 

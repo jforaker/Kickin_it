@@ -94,9 +94,12 @@ load("home#index", function (controller, action) {
                         venues[i].venue.location.lng
                     );
                     // Build icon for each venue
+                    var pref = venues[i].venue.categories[0].icon.prefix;
+                    var icoo = pref.slice(20);
+
                     var leafletIcon = L.Icon.extend({
                         options: {
-                            iconUrl: venues[i].venue.categories[0].icon,
+                            iconUrl: 'https://foursquare.com' + icoo + '32' + venues[i].venue.categories[0].icon.suffix,
                             shadowUrl: null,
                             iconSize: new L.Point(32, 32),
                             iconAnchor: new L.Point(16, 41),
