@@ -15,6 +15,10 @@
     left: 20px !important;
   }
 
+  [class*="kick-map-"]{
+    background: none  !important;
+  }
+
   .added {
     border: 5px dashed #3498db;
     display: none;
@@ -32,6 +36,8 @@
 
 
   .leaflet-marker-icon {
+    background: #3498db;
+    border-radius: 5px;
     //  background: url(https://foursquare.com/img/pin-blue-transparent.png);
     //  padding: 6px;
     //  padding-bottom: 17px;

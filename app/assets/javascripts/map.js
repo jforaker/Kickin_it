@@ -11,7 +11,8 @@ load("home#index", function (controller, action) {
         clientId: 'BCH20MFU1KWJNGTFVQHYSOQGDA42BZ5KYWGIQJW40HT4PAOT',
         clientSecret: 'EQBJW4R53FTIB4Y1DZV0J35YX3VPBRR1B5H4TNJO12V1E25I',
         authUrl: 'https://foursquare.com/',
-        apiUrl: 'https://api.foursquare.com/'
+        apiUrl: 'https://api.foursquare.com/',
+        apiVerson: '20140223'
     };
 
     //Get coordinates via HTML 5 geolocation
@@ -81,7 +82,7 @@ load("home#index", function (controller, action) {
 
         // Query foursquare API for venue recommendations near the current location
         jQuery( "#foursquare-button" ).click(function() {
-            $.getJSON(config.apiUrl + 'v2/venues/explore?ll=' + lat + ',' + lng + '&client_id=' + config.clientId + '&client_secret=' + config.clientSecret, {}, function (data) {
+            $.getJSON(config.apiUrl + 'v2/venues/explore?ll=' + lat + ',' + lng + '&client_id=' + config.clientId + '&client_secret=' + config.clientSecret + '&v=' + config.apiVerson, {}, function (data) {
                 venues = data.response.groups[0].items;
 
                 // Place marker for each venue
@@ -93,9 +94,12 @@ load("home#index", function (controller, action) {
                         venues[i].venue.location.lng
                     );
                     // Build icon for each venue
+                    var pref = venues[i].venue.categories[0].icon.prefix;
+                    var icoo = pref.slice(20);
+
                     var leafletIcon = L.Icon.extend({
                         options: {
-                            iconUrl: venues[i].venue.categories[0].icon,
+                            iconUrl: 'https://foursquare.com' + icoo + '32' + venues[i].venue.categories[0].icon.suffix,
                             shadowUrl: null,
                             iconSize: new L.Point(32, 32),
                             iconAnchor: new L.Point(16, 41),
