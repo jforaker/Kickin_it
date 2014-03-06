@@ -3,16 +3,14 @@
 
 =========
 
-Kickin It is a place for guys that want to kick it with other dudes and post low key events related to drinking. 
-
-The target audience is males, ages 21-35, especially those new to NYC looking to meet new guy friends.
 > It's easy to find a date online but finding new guy friends can be a challenge
+
+Kickin It is a place for guys that want to kick it with other dudes and post low key events related to drinking. 
 
 Functionality:
   1. User can create a profile with some basic characteristics (quiet or loud, intellectual or shit-talker, don't drink or get wasted)
   2. User will post events with time and location, to be displayed on a map
   3. A "feed" will show the most recent event posts with corresponding map
-  4. API - Google Maps or Foursquare (or both)
 
 In the works:
   1. Login with Foursquare / Twitter
