@@ -21,8 +21,10 @@
           <li><%=link_to "Account", edit_user_registration_path %></li>
           <li> <a href="#" data-toggle="modal" data-target="#signout-modal">Sign out</a> </li>
       <% else %>
-          <%= link_to "Sign up", new_user_registration_path %> or
-          <%= link_to "Sign in", new_user_session_path %>
+          <div class="not-signed-in">
+              <%= link_to "Sign up", new_user_registration_path %> or
+              <%= link_to "Sign in", new_user_session_path %>
+          </div>
       <% end %>
     </ul>
   </div>

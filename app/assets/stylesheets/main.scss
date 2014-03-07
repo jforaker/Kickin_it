@@ -19,8 +19,13 @@
 
 .navbar-right{
   position: absolute;
-  right: 0px;
-  top: 12px;
+  right: 20px;
+  top: 10px;
+}
+
+.not-signed-in{
+  top: 15px;
+  position: relative;
 }
 
 .login-form:before {

@@ -12,9 +12,6 @@
                     <div class="imageContainer">
                         <% if @kick.filepicker_avatar_url !='' %>
                             <%= filepicker_image_tag @kick.filepicker_avatar_url, w: 110, h: 110, fit: 'clip', class: 'pic img-rounded img-responsive' %>
-
-                        <!--<#% elsif @kick.avatar_file_size != 'nil' %>-->
-                            <!--<#%= image_tag @kick.user_avatar.url(:thumb), :class => "pic img-rounded img-responsive"   %>-->
                         <% else %>
                             <img src="/assets/default.jpg">
                         <% end %>

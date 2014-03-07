@@ -17,14 +17,12 @@ load("home#index", function (controller, action) {
 
     //Get coordinates via HTML 5 geolocation
     navigator.geolocation.getCurrentPosition(function (data) {
-        var lat = data.coords.latitude;
-        var lng = data.coords.longitude;
+        var lat = data.coords.latitude
+            , lng = data.coords.longitude
 
         // Create map
-        var map = L.mapbox.map('mapbox', 'jakeforaker83.map-3rsqzlls')
-            .setView(new L.LatLng(lat, lng + 0.005), 15);   // "+" adds some padding
-
-
+            , map = L.mapbox.map('mapbox', 'jakeforaker83.map-3rsqzlls')
+                .setView(new L.LatLng(lat, lng + 0.005), 15);   // "+" adds some padding
 
         //lets disable zoom
         map.touchZoom.disable();
@@ -70,8 +68,6 @@ load("home#index", function (controller, action) {
                 console.log(lat + '   ' + lng);
             });
 
-            //console.log('lat =  ' + marker._latlng.lat + 'long =  ' + marker._latlng.lng);
-
             marker.addTo(map);
         }
 
@@ -80,7 +76,10 @@ load("home#index", function (controller, action) {
             provider: new L.GeoSearch.Provider.Google()
         }).addTo(map);
 
-        // Query foursquare API for venue recommendations near the current location
+        /* ======================= Query foursquare API for venue recommendations near the current location
+        ==========================
+         */
+
         jQuery( "#foursquare-button" ).click(function() {
             $.getJSON(config.apiUrl + 'v2/venues/explore?ll=' + lat + ',' + lng + '&client_id=' + config.clientId + '&client_secret=' + config.clientSecret + '&v=' + config.apiVerson, {}, function (data) {
                 venues = data.response.groups[0].items;
@@ -90,94 +89,95 @@ load("home#index", function (controller, action) {
 
                     // Get marker's location
                     var latLng = new L.LatLng(
-                        venues[i].venue.location.lat,
-                        venues[i].venue.location.lng
-                    );
+                            venues[i].venue.location.lat,
+                            venues[i].venue.location.lng
+                        )
                     // Build icon for each venue
-                    var pref = venues[i].venue.categories[0].icon.prefix;
-                    var icoo = pref.slice(20);
+                        , pref = venues[i].venue.categories[0].icon.prefix
+                        , icoo = pref.slice(20)
 
-                    var leafletIcon = L.Icon.extend({
-                        options: {
-                            iconUrl: 'https://foursquare.com' + icoo + '32' + venues[i].venue.categories[0].icon.suffix,
-                            shadowUrl: null,
-                            iconSize: new L.Point(32, 32),
-                            iconAnchor: new L.Point(16, 41),
-                            popupAnchor: new L.Point(0, -51)
-                        }
-                    });
-                    var icon = new leafletIcon(),
+                        , leafletIcon = L.Icon.extend({
+                            options: {
+                                iconUrl: 'https://foursquare.com' + icoo + '32' + venues[i].venue.categories[0].icon.suffix,
+                                shadowUrl: null,
+                                iconSize: new L.Point(32, 32),
+                                iconAnchor: new L.Point(16, 41),
+                                popupAnchor: new L.Point(0, -51)
+                            }
+                        })
+                        , icon = new leafletIcon(),
+
                         lati = venues[i].venue.location.lat,
                         longi = venues[i].venue.location.lng,
                         loc = venues[i].venue.name,
                         hereNow = venues[i].venue.hereNow.count,
                         personPeople = (hereNow == 1) ? 'person' : 'people',
-                        locationHref = loc.toString().replace(/ /g, '-');
+                        locationHref = loc.toString().replace(/ /g, '-')
 
 
-                    var tpl = '<h3> ' + loc + ' </h3><br />' +
-                        '<h5>' + hereNow + ' ' + personPeople + ' here now </h5>' +
-                        '<a id="newkick" href="/kicks/new?spot=' + locationHref + '&?Lat=' + lati + '&?Lng=' + longi  + '">Kick it</a> ';
-                    //  newkickpath;
+                        , tpl = '<h3> ' + loc + ' </h3><br />' +
+                            '<h5>' + hereNow + ' ' + personPeople + ' here now </h5>' +
+                            '<a id="newkick" href="/kicks/new?spot=' + locationHref + '&?Lat=' + lati + '&?Lng=' + longi  + '">Kick it</a> '
 
-                    var marker = new L.Marker(latLng, {icon: icon})
-                        .bindPopup(tpl, { closeButton: true })
-                        .on('mouseclick', function (e) {
-                            this.openPopup();
-                        });
-                    // .on('mouseout', function(e) { this.closePopup(); });
+                            //  newkickpath;
+
+                        , marker = new L.Marker(latLng, {icon: icon})
+                            .bindPopup(tpl, { closeButton: true })
+                            .on('mouseclick', function (e) {
+                                this.openPopup();
+                            });
                     map.addLayer(marker);
                 }
             });
         });
 
-        //get kicks locations based on their saved lat/long
+        /* ================  get kicks locations based on their saved lat/long
+        ===================
+         */
+
+
         jQuery.getJSON('/index.json', {}, function(coordinates) {
             var res = coordinates;
             for (var i = 0; i < res.length; i++) {
 
                 var kickData = {
-                    lat:        res[i].latitude,
-                    lng:        res[i].longitude,
-                    title:      res[i].title,
-                    party_id:   res[i].id,
-                    created_by: res[i].username
-                };
+                        lat:        res[i].latitude,
+                        lng:        res[i].longitude,
+                        title:      res[i].title,
+                        party_id:   res[i].id,
+                        created_by: res[i].username
+                    }
 
-                console.log(kickData);
+                    , latLng = new L.LatLng(
+                        res[i].latitude,
+                        res[i].longitude
+                    )
 
-                var latLng = new L.LatLng(
-                    res[i].latitude,
-                    res[i].longitude
-                );
-
-                var beer_data = $('#foobar').attr('data');
+                    , beer_data = $('#foobar').attr('data')
 
                 // Build icon for each kick location
-                var kickIcon = L.Icon.extend({
-                    options: {
-                        iconUrl: beer_data,
-                        shadowUrl: null,
-                        iconSize: new L.Point(40, 40),
-                        iconAnchor: new L.Point(16, 41),
-                        popupAnchor: new L.Point(0, -51),
-                        className:  'kick-map-' + kickData.party_id
-                    }
-                });
-                var icon = new kickIcon();
-
-                var tpl =   '<h3> ' + kickData.title + ' </h3><br />' +
-                    '<h5><a href="/user/'+kickData.created_by+'"> by ' + kickData.created_by + ' </a></h5><br />' +
-                    '<a id="newkick" href="/kicks/new?spot=' + kickData.lng + '">Kick it | Join</a> ';
-
-                var marker = new L.Marker(latLng, {icon: icon})
-                    .bindPopup(tpl, { closeButton: true })
-                    .on('mouseclick', function (e) {
-                        this.openPopup();
+                    , kickIcon = L.Icon.extend({
+                        options: {
+                            iconUrl: beer_data,
+                            shadowUrl: null,
+                            iconSize: new L.Point(40, 40),
+                            iconAnchor: new L.Point(16, 41),
+                            popupAnchor: new L.Point(0, -51),
+                            className:  'kick-map-' + kickData.party_id
+                        }
                     })
-                    .on('mouseout', function (e){
-                        //partiesArray.fadeIn();
-                    });
+                    , icon = new kickIcon()
+
+                    , tpl =   '<h3> ' + kickData.title + ' </h3><br />' +
+                        '<h5><a href="/user/'+kickData.created_by+'"> by ' + kickData.created_by + ' </a></h5><br />' +
+                        '<a id="newkick" href="/kicks/new?spot=' + kickData.lng + '">Kick it | Join</a> '
+
+                    , marker = new L.Marker(latLng, {icon: icon})
+                        .bindPopup(tpl, { closeButton: true })
+                        .on('mouseclick', function (e) {
+                            this.openPopup();
+                        });
+
                 map.addLayer(marker);
 
                 //create border div element behind icon (hidden until click)
@@ -231,39 +231,8 @@ load("home#index", function (controller, action) {
                 });
             }
         });
-
-        jQuery( "#single-all" ).click(function(){
-            jQuery(this).toggleClass('single-view');
-
-            var me = jQuery(this);
-            me.text() == me.data("text-single") ? me.text(me.data("text-all")) : me.text(me.data("text-single"));
-
-            //show only the first Kick
-            var partiesArray = jQuery('.kick-contr');
-            partiesArray.hide();
-            jQuery(partiesArray[0]).show();
-
-            if (jQuery(this).hasClass('single-view')) {
-
-                jQuery('.leaflet-marker-icon').click(function (e) {
-                    partiesArray.hide();
-                    var getid = this.classList[1].slice(9);
-                    console.log(getid);
-
-                    //show only the Kick that is clicked on
-
-                    //TODO -- after all is selected SOME BUG happens
-
-                    var thisparty = jQuery('.kicks-all').find('.kick-list-' + getid)[0];
-                    jQuery(thisparty).show();
-                });
-            }
-            else {
-                partiesArray.show();
-            }
-
-        });
-
     });
 });
+
+
 
