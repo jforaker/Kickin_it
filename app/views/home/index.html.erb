@@ -24,10 +24,13 @@
                 <div class="desc" style="color: #F39C12"><%= kick.scale %> </div>
                 <div class="imageContainer">
 
-                    <% if kick.user_avatar %>
-                        <a href="user/<%= kick.username %>"> <%= image_tag kick.user_avatar.url(:thumb), class: "opacity" %></a>
-                    <% elsif (kick.filepicker_url != "") && (kick.user_avatar == 'nil') %>
-                        <a href="user/<%= kick.username %>"> <%= filepicker_image_tag kick.filepicker_avatar_url, fit: 'clip' %></a>
+                    <!--<#% if kick.user_avatar %>-->
+                        <!--<a href="user/<%= kick.username %>"> <%= image_tag kick.user_avatar.url(:thumb), class: "opacity" %></a>-->
+                    <!--<#% elsif (kick.filepicker_url != "") && (kick.user_avatar == 'nil') %>-->
+                      <!--<#% end %>-->
+                    <% if kick.filepicker_avatar_url %>
+
+                      <a href="user/<%= kick.username %>"> <%= filepicker_image_tag kick.filepicker_avatar_url, fit: 'clip' %></a>
                     <% else %>
                         <a href="user/<%= kick.username %>"> <img src="https://s3.amazonaws.com/kickin_it_s3/icons/default.jpg"></a>
                     <% end %>

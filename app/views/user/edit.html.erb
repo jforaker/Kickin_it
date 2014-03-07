@@ -1,8 +1,10 @@
 <h1>Edit Profile </h1>
 
-<% if @user.avatar_content_type %>
-    <%= image_tag @user.avatar.url(:medium) %>
-<% end %>
+<% if @user.filepicker_url != ""  %>
+    <%= filepicker_image_tag @user.filepicker_url, w: 110, h: 110, fit: 'clip', class: "img-rounded img-responsive" %>
+    <% else %>
+        <img src="/assets/default.jpg">
+    <% end %>
 
 <%= form_for(@user) do |f| %>
     <% if @user.errors.any? %>
@@ -16,18 +18,18 @@
         </div>
     <% end %>
 
-    <% if !@user.avatar_content_type %>
-        <div><%= f.label :avatar %><br />
-            <%= f.file_field :avatar, class: "form-control"  %>
-        </div>
-    <% end %>
-
     <br>
 
     <div>
-        <%= f.label :filepicker_url, "Upload Your Avatar:" %>
-        <%= f.filepicker_field :filepicker_url %> <!-- User#filepicker_url is a regular string column -->
+          <%= f.label :filepicker_url, "Upload a photo from the cloud:  " %>
+          <%= f.filepicker_field :filepicker_url,
+                                 :'data-fp-apikey' => 'ARSPEML9RTdartRlwYl8hz', :'data-fp-container' => 'modal',
+                                 :'data-fp-mimetypes' => '*/*', :'data-fp-services' => 'COMPUTER,IMAGE_SEARCH,DROPBOX,FACEBOOK,GITHUB,GOOGLE_DRIVE,FLICKR,GMAIL,INSTAGRAM,PICASA',
+                                 class: "btn btn-default", onchange:"pick(event)"%>
+
     </div>
+
+      <br>
 
     <div id="slider1" class="ui-slider"></div>
     <p>
