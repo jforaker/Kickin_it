@@ -50,6 +50,9 @@ input[type="file"]{
   width: 40px !important;
 }
 
+#user_remember_me{
+  width: 20px;
+}
 
 /* font-awesome */
 
@@ -80,4 +83,29 @@ IMG{
 
 .main{
   margin: 10px 0 10px 0;
+}
+
+.imageContainer {
+  width: 112px;
+  padding-bottom: 112px;
+  position: relative;
+  overflow: hidden;
+
+  IMG {
+    height: 108px;
+    width: 108px;
+    position: absolute;
+    left: 0;
+    border: 2px solid white;
+    transition: all 0.7s ease-in-out;
+    margin-right: 55px;
+    border-radius:50%;
+
+
+    &:hover{
+      transform:rotate(360deg);
+      -ms-transform:rotate(8deg);
+      -webkit-transform:rotate(360deg);
+    }
+  }
 }

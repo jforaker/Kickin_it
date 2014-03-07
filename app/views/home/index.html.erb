@@ -1,60 +1,54 @@
 <div class="main">
 
-    <%= render 'mapbox' %>
-    <%= render 'sidebar' %>
-
-    <div class="kicks-all">
-        <button id="single-all" class="btn btn-info btn-block" data-text-single="Single view?" data-text-all="View All">Single view?</button>
-
-
-        <% beer_icon = asset_path("beer-icon.png") %>
-        <div id="foobar" data=<%= beer_icon %>></div>
+  <%= render 'mapbox' %>
+  <% if current_user %>
+      <%= render 'sidebar' %>
+  <% end %>
 
 
-        <% @kicks.each do |kick| %>
+  <div class="kicks-all">
+    <button id="single-all" class="btn btn-info btn-block" data-text-single="Single view?" data-text-all="View All">Single view?</button>
 
-            <div class="kick-contr kick-list-<%= kick.id %>" id="<%= kick.id %>" >
-                <div class="title">
-                    <h1> <%= link_to kick.title, kick_path(kick) %></h1>
-                </div>
-                <div class="loc"><small><i id="time-icon" class="fa fa-clock-o"></i><%= kick.time %> | at <%= kick.location %></small></div>
 
-                <br>
-                <div class="desc"><blockquote><%= kick.description %></blockquote></div>
-                <div class="desc" style="color: #F39C12"><%= kick.scale %> </div>
-                <div class="imageContainer">
+    <% beer_icon = asset_path("beer-icon.png") %>
+    <div id="foobar" data=<%= beer_icon %>></div>
 
-                    <!--<#% if kick.user_avatar %>-->
-                        <!--<a href="user/<%= kick.username %>"> <%= image_tag kick.user_avatar.url(:thumb), class: "opacity" %></a>-->
-                    <!--<#% elsif (kick.filepicker_url != "") && (kick.user_avatar == 'nil') %>-->
-                      <!--<#% end %>-->
-                    <% if kick.filepicker_avatar_url %>
 
-                      <a href="user/<%= kick.username %>"> <%= filepicker_image_tag kick.filepicker_avatar_url, fit: 'clip' %></a>
-                    <% else %>
-                        <a href="user/<%= kick.username %>"> <img src="https://s3.amazonaws.com/kickin_it_s3/icons/default.jpg"></a>
-                    <% end %>
+    <% @kicks.each do |kick| %>
 
-                </div>
-                <div class="in">
+        <div class="kick-contr kick-list-<%= kick.id %>" id="<%= kick.id %>" >
+          <div class="title">
+            <h1> <%= link_to kick.title, kick_path(kick) %></h1>
+          </div>
+          <div class="loc"><small><i id="time-icon" class="fa fa-clock-o"></i><%= kick.time %> | at <%= kick.location %></small></div>
+
+          <br>
+          <div class="desc"><blockquote><%= kick.description %></blockquote></div>
+          <div class="desc" style="color: #F39C12"><%= kick.scale %> </div>
+          <div class="imageContainer-index">
+
+            <% if kick.filepicker_avatar_url !='' %>
+                <a href="user/<%= kick.username %>"> <%= filepicker_image_tag kick.filepicker_avatar_url, fit: 'clip' %></a>
+            <% else %>
+                <a href="user/<%= kick.username %>"> <img src="https://s3.amazonaws.com/kickin_it_s3/icons/default.jpg"></a>
+            <% end %>
+
+          </div>
+          <div class="in">
                     <span>Posted <%= time_ago_in_words(kick.created_at) %> ago by
-                        <% if kick.username == current_user.permalink %>
+                     <% if current_user && kick.username == current_user.permalink %>
                         me   |  <%= link_to "edit", edit_kick_path(kick.id) %>
                     <% else %>
                         <%= link_to kick.username, user_path(kick.username) %>
                     <% end %>
                     </span>
 
-                </div>
-            </div>
-        <% end %>
-    </div>
-    <div id="fs">
-        <button id="foursquare-button" class="btn btn-info btn-block"><i class="fa fa-foursquare" style="font-size: 19px;color: white;padding-right: 8px;"></i> Check foursquare</button>
-    </div>
-    <br>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  <div id="fs">
+    <button id="foursquare-button" class="btn btn-info btn-block"><i class="fa fa-foursquare" style="font-size: 19px;color: white;padding-right: 8px;"></i> Check foursquare</button>
+  </div>
+  <br>
 </div>
-
-<%= javascript_tag do %>
-    window.signInTime = ('<%= current_user.current_sign_in_at %>');
-<% end %>

@@ -1,10 +1,12 @@
 class KicksController < ApplicationController
+
+
   def index
   end
 
   def show
     @kick = Kick.find(params[:id])
-    @user = current_user.name
+    #@user = current_user.name
     respond_to do |format|
       format.html
       format.json { render :json => @kick }
@@ -12,10 +14,13 @@ class KicksController < ApplicationController
   end
 
   def new
+
+    authenticate_user!
     @kick = Kick.new
   end
 
   def create
+
     @user = current_user
     kick_params = params.require(:kick).permit(:title, :description, :time, :location, :user_id,
                                                :latitude, :longitude,

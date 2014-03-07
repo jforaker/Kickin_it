@@ -10,7 +10,7 @@
             <div class="party">
                 <div class="pull-left" href="#">
                     <div class="imageContainer">
-                        <% if @kick.filepicker_avatar_url %>
+                        <% if @kick.filepicker_avatar_url !='' %>
                             <%= filepicker_image_tag @kick.filepicker_avatar_url, w: 110, h: 110, fit: 'clip', class: 'pic img-rounded img-responsive' %>
 
                         <!--<#% elsif @kick.avatar_file_size != 'nil' %>-->
@@ -34,7 +34,7 @@
 </div>
 <br>
 
-<% if @kick.username == current_user.permalink %>
+<% if current_user && @kick.username == current_user.permalink %>
     <%= link_to "This looks like your kick. Edit it?", edit_kick_path(@kick.id), class: "btn btn-warning btn-wide pull-right" %>
 <% end %>
 
